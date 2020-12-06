@@ -1,0 +1,63 @@
+﻿/*!
+ * vd-view colours
+ */
+$colours: [
+    'white'     white               rgb(52, 58, 64),
+    'black'     black               white,
+    'red'       rgb(255, 0, 0)      white,
+    'green'     rgb(0, 255, 0)      white,
+    'yellow'    rgb(255, 255, 0)    rgb(52, 58, 64),
+    'blue'      rgb(0, 0, 255)      white,
+    'magenta'   rgb(255, 0, 255)    white,
+    'cyan'      rgb(0, 255, 255)    rgb(52, 58, 64)
+];
+
+@each $pair in $colours {
+    .fg-#{nth($pair, 1)} {
+        color: #{nth($pair, 2)};
+    }
+
+    .svg-viewdata-view-cell {
+        .fg-#{nth($pair, 1)} {
+            fill: #{nth($pair, 2)};
+        }
+
+        &.mosaic .fg-#{nth($pair, 1)} {
+            stroke: #{nth($pair, 2)};
+        }
+
+        &.concealed .fg-#{nth($pair, 1)} {
+            fill: transparent;
+            stroke: transparent;
+        }
+
+        &.concealed &.mosaic .fg-#{nth($pair, 1)} {
+            stroke: transparent;
+        }
+    }
+
+    .revealed .svg-viewdata-view-cell {
+        &.concealed .fg-#{nth($pair, 1)} {
+            fill: #{nth($pair, 2)};
+        }
+
+        &.concealed &.mosaic .fg-#{nth($pair, 1)} {
+            stroke: #{nth($pair, 2)};
+        }
+    }
+
+    .bg-#{nth($pair, 1)} {
+        background-color: #{nth($pair, 2)};
+
+        &.text-auto {
+            color: #{nth($pair, 3)};
+        }
+    }
+
+    .svg-viewdata-view-cell {
+        .bg-#{nth($pair, 1)} {
+            fill: #{nth($pair, 2)};
+            stroke: #{nth($pair, 2)};
+        }
+    }
+}

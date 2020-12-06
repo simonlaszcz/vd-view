@@ -1,0 +1,30 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" class="svg-viewdata-view" preserveAspectRatio="xMinYMin" viewBox="0 0 600 500" data-bind="attr: {viewBox: SVG.ViewBox}, style: {'font-size': SVG.FontSize}, css: {revealed: IsRevealed, 'show-grid': ShowGrid, 'enable-flash': EnableFlash}">
+    <!-- ko foreach: SVG.Rows -->
+        <g class="svg-viewdata-view-row">
+            <!-- ko ifnot: IsHidden -->
+                <!-- ko foreach: $data.Cells -->
+                <clipPath data-bind="attr: {id: `clip-${Id()}`}" clipPathUnits="userSpaceOnUse">
+                    <rect data-bind="attr: {x: X() - 1, y: Y() - 1, width: Width() + 2, height: $parent.RowHeight() + 2}" width="0" height="0" />
+                </clipPath>
+
+                <g data-bind="attr: {'clip-path': `url(#clip-${Id()})`, 'class': CellCss }">
+                    <rect data-bind="attr: {'class': BgCss, x: X, y: Y, width: Width, height: $parent.RowHeight}" width="0" height="0" shape-rendering="crispEdges" />
+                    <text data-bind="attr: {'class': FgCss, x: TextX, y: TextY}, text: Character"></text>
+
+                    <!-- ko foreach: Fixes -->
+                        <text data-bind="attr: {'class': $parent.FgCss, x: X, y: Y}, text: $parent.Character"></text>
+                    <!-- /ko -->
+                </g>
+                <!-- /ko -->   
+            <!-- /ko -->   
+        </g>
+    <!-- /ko -->
+
+    <!-- ko if: ShowGrid -->
+        <g class="svg-viewdata-view-grid">
+        <!-- ko foreach: SVG.Grid -->
+            <line data-bind="attr: {x1: X1, x2: X2, y1: Y1, y2: Y2, 'class': Css}" />
+        <!-- /ko -->
+        </g>
+    <!-- /ko -->
+</svg>

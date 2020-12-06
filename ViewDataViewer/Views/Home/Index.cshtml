@@ -1,0 +1,166 @@
+﻿@section title
+{
+vd-view viewdata client
+}
+
+@section navtext 
+{
+<span class="badge badge-light"><span data-bind="text: UserStats"></span></span>
+}
+
+<div class="row mt-2">
+    <div class="col">
+        <div data-bind="with: View">
+            <div id="mainViewCard" class="card card-dark bedstead clearfix">
+                <div class="card-header">
+                    <span class="card-header-text" data-bind="text: $root.Header, attr: {title: $root.Header}">&nbsp;</span>
+                    <a title="Fullscreen" class="float-right d-none d-lg-inline" href="#" data-bind="click: $root.FullScreen"><i class="fas fa-expand"></i></a>
+                </div>
+                <div id="mainView" class="card-body viewdata-view-wrapper" tabindex="0" data-bind="event: {keydown: $root.Keyboard.OnKeyDown}, hasFocus: $root.IsViewFocused">
+                    <partial name="_KoSvgViewDataView" />
+                </div>
+                <div class="card-footer">
+                    <div class="row">
+                        <div class="col">
+                            <span class="switch-text">
+                                <span>Show Grid</span>
+                                <label class="switch text-normal">
+                                    <input type="checkbox" data-bind="checked: ShowGrid">
+                                    <span class="slider round"></span>
+                                </label>
+                            </span>&nbsp;&nbsp;
+
+                            <span class="switch-text">
+                                <span>Enable Flashing</span>
+                                <label class="switch text-normal">
+                                    <input type="checkbox" data-bind="checked: EnableFlash">
+                                    <span class="slider round"></span>
+                                </label>
+                            </span>  
+
+                            <a title="Save as image" class="float-right switch-text" href="#" data-bind="click: $root.SaveAsImage.bind()"><i class="fas fa-image"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col" data-bind="visible: true" style="display: none;">
+        <div class="bedstead float-xl-left">
+            <div class="commands">
+                <div class="row no-gutters" data-bind="visible: IsViewdata" style="display: none;">
+                    <div class="col d-flex flex-row">
+                        <div class="input-group flat no-border flex-fill">
+                            <label for="SendText" class="sr-only">Text to Send</label>
+                            <input name="SendText" type="text" class="form-control flat no-border" data-bind="enable: EnableCommands, value: Input, event: {keydown: OnKeyDown}" />
+                            <div class="input-group-append">
+                                <button title="Send" type="button" class="btn btn-dark flat" data-bind="enable: EnableCommands, click: Send.bind()"><i class="fas fa-long-arrow-alt-right"></i>/#</button>                        
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row no-gutters" data-bind="visible: IsViewdata" style="display: none;">
+                    <div class="col d-flex flex-row">
+                        <button type="button" class="btn btn-dark flat flex-fill" data-bind="enable: EnableCommands, click: Command.bind('*#', '*#')" title="Previous frame (*#)"><i class="fas fa-backward"></i></button>
+                        <button type="button" class="btn btn-dark flat flex-fill" data-bind="enable: EnableCommands, click: Command.bind('*0#', '*0#')" title="Main index frame (*0#)"><i class="fas fa-home"></i></button>
+                        <button type="button" class="btn btn-dark flat flex-fill" data-bind="enable: EnableCommands, click: Command.bind('*00#', '*00#')" title="Reload current frame (*00#)"><i class="fas fa-redo"></i></button>
+                        <button type="button" class="btn btn-dark flat flex-fill" data-bind="enable: EnableCommands, click: Command.bind('*09#', '*09#')" title="Update current frame (*09#)"><i class="fas fa-sync"></i></button>
+                    </div>
+                </div>
+                <div class="row no-gutters">
+                    <div class="col d-flex flex-row">
+                        <button class="btn btn-dark flat flex-fill" data-bind="enable: EnableCommands() && IsViewdata(), click: $root.Command.bind('*', '*')">*</button>
+                    </div>
+                </div>
+                <div class="row no-gutters">
+                    <div class="col d-flex flex-row">
+                        <button class="btn btn-dark flat flex-fill" data-bind="enable: EnableCommands, click: $root.Command.bind('1', '1')">1</button>
+                        <button class="btn btn-dark flat flex-fill" data-bind="enable: EnableCommands, click: $root.Command.bind('2', '2')">2</button>
+                        <button class="btn btn-dark flat flex-fill" data-bind="enable: EnableCommands, click: $root.Command.bind('3', '3')">3</button>
+                        <button class="btn btn-dark flat flex-fill" data-bind="enable: EnableCommands, click: $root.Command.bind('4', '4')">4</button>
+                        <button class="btn btn-dark flat flex-fill" data-bind="enable: EnableCommands, click: $root.Command.bind('5', '5')">5</button>
+                    </div>
+                </div>
+                <div class="row no-gutters">
+                    <div class="col d-flex flex-row">
+                        <button class="btn btn-dark flat flex-fill" data-bind="enable: EnableCommands, click: $root.Command.bind('6', '6')">6</button>
+                        <button class="btn btn-dark flat flex-fill" data-bind="enable: EnableCommands, click: $root.Command.bind('7', '7')">7</button>
+                        <button class="btn btn-dark flat flex-fill" data-bind="enable: EnableCommands, click: $root.Command.bind('8', '8')">8</button>
+                        <button class="btn btn-dark flat flex-fill" data-bind="enable: EnableCommands, click: $root.Command.bind('9', '9')">9</button>
+                        <button class="btn btn-dark flat flex-fill" data-bind="enable: EnableCommands, click: $root.Command.bind('0', '0')">0</button>
+                    </div>
+                </div>
+                <div class="row no-gutters" data-bind="visible: IsViewdata" style="display: none;">
+                    <div class="col d-flex flex-row">
+                        <button class="btn btn-dark flat flex-fill" data-bind="enable: EnableCommands() && EnableDownload(), click: Download.bind()" title="Download">Start Download</button>
+                    </div>
+                </div>
+                <div class="row no-gutters">
+                    <div class="col d-flex flex-column">
+                        <button class="btn btn-dark flat flex-fill" data-bind="click: ToggleReveal.bind(), css: {active: View.IsRevealed}" title="Show hidden content">Reveal</button>
+                        <button title="Hold current page" class="btn btn-dark flat flex-fill" data-bind="enable: EnableCommands, click: $root.Command.bind('H', 'H'), visible: IsTeletext" style="display: none;">Hold</button>
+                        <button title="Toggle between clock and FastText labels" class="btn btn-dark flat flex-fill" data-bind="enable: EnableCommands, click: $root.Command.bind('T', 'T'), visible: IsTeletext" style="display: none;">Clock</button>
+                        <button title="FastText RED" class="btn btn-danger flat flex-fill" data-bind="enable: EnableCommands, click: $root.Command.bind('U', 'U'), visible: IsTeletext" style="display: none;">Red</button>
+                        <button title="FastText YELLOW" class="btn btn-warning flat flex-fill" data-bind="enable: EnableCommands, click: $root.Command.bind('O', 'O'), visible: IsTeletext" style="display: none;">Yellow</button>
+                        <button class="btn btn-dark flat flex-fill" data-bind="click: ToggleConnect.bind(), css: {active: IsConnected}, text: IsConnected() ? 'Disconnect' : 'Connect'">Connect</button>
+                    </div>
+                    <div class="col d-flex flex-column">
+                        <button class="btn btn-dark flat flex-fill" data-bind="click: SaveFrame.bind()" title="Save frame"><i class="fas fa-save"></i>&nbsp;</button>
+                        <button title="Next page" class="btn btn-dark flat flex-fill" data-bind="enable: EnableCommands, click: $root.Command.bind('.', '.'), visible: IsTeletext" style="display: none;">Advance</button>
+                        <button title="Go to index page" class="btn btn-dark flat flex-fill" data-bind="enable: EnableCommands, click: $root.Command.bind('Y', 'Y'), visible: IsTeletext" style="display: none;">Guide</button>
+                        <button title="FastText GREEN" class="btn btn-success flat flex-fill" data-bind="enable: EnableCommands, click: $root.Command.bind('I', 'I'), visible: IsTeletext" style="display: none;">Green</button>
+                        <button title="FastText BLUE" class="btn btn-primary flat flex-fill" data-bind="enable: EnableCommands, click: $root.Command.bind('P', 'P'), visible: IsTeletext" style="display: none;">Blue</button>
+                        <button class="btn btn-dark flat flex-fill" data-bind="enable: EnableCommands() && EnableLogoff(), click: $root.Logoff.bind()" title="Log off without disconnecting">Log Off</button>
+                    </div>
+                </div>
+                <div class="row no-gutters">
+                    <div class="col d-flex flex-row">
+                        <label class="sr-only" for="SelectedService">Service to connect to</label>
+                        <select name="SelectedService" class="form-control flat no-border flex-fill" data-bind="value: SelectedService, options: Services, disable: IsConnected"></select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<partial name="_SavedFrames" />
+
+<div id="downloads" class="row mt-2" data-bind="visible: Downloads().length > 0" style="display: none;">
+    <div class="col-12">
+        <div class="card card-dark bedstead">
+            <div class="card-header">Downloads</div>
+            <div class="card-body console-output-wrapper bedstead">
+                <div class="console-output">
+                    <ul data-bind="foreach: Downloads">
+                        <li><span data-bind="text: filename"></span> (<span data-bind="text: size"></span> bytes)
+                        <a href="#" data-bind="attr: {href: uri, download: filename}">Save</a>
+                        <a href="#" data-bind="click: $root.RemoveDownload.bind($index(), $index())">Remove</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<input id="Clipboard" type="text" data-bind="value: Clipboard" style="position: absolute; left: -1000px; top: -1000px; font-size: 1px;" />
+<canvas id="Canvas" style="display:none;"></canvas>
+
+@section scripts
+{
+    <script src="~/libs/requirejs/require.min.js?@Host.FileHash("~/libs/requirejs/require.min.js")"></script>
+    <script>
+        window.addEventListener('load', function () {
+            require.config({
+                paths: {
+                    main: '/js/bundles/main.bundle.js?@Host.FileHash("~/js/bundles/main.bundle.js")'
+                }
+            });
+
+            require(["main"], function () {
+                window.vdView.init();
+            });
+        });
+    </script>
+}

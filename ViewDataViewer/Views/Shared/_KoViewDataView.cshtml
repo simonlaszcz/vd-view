@@ -1,0 +1,26 @@
+﻿<table class="viewdata-view" data-bind="css: {revealed: IsRevealed, 'show-grid': ShowGrid, 'enable-flash': EnableFlash}">
+    <tbody>
+        <!-- ko if: ShowGrid -->
+        <tr class="viewdata-view-row">
+            <td></td>
+            <!-- ko foreach: _.range(1, Constants.MaxCols + 1, 1) -->
+            <td data-bind="text: $data % 10"></td>
+            <!-- /ko -->
+        </tr>
+        <!-- /ko -->
+        <!-- ko foreach: Buffer.Rows -->
+            <!-- ko ifnot: IsHidden -->
+            <tr class="viewdata-view-row">
+                <!-- ko if: $parent.ShowGrid -->
+                    <td data-bind="text: ($index() + 1) % 10"></td>
+                <!-- /ko -->
+                <!-- ko foreach: $data.Cells --><td data-bind="attr: {'class': Css}, text: Character"></td><!-- /ko -->
+            </tr> 
+            <!-- /ko -->
+        <!-- /ko -->
+        <tr class="viewdata-view-row">
+            <td data-bind="visible: ShowGrid" style="display: none;">5</td>
+            <!-- ko foreach: Buffer.StatusRow.Cells --><td data-bind="attr: {'class': Css}, text: Character"></td><!-- /ko -->
+        </tr> 
+    </tbody>
+</table>

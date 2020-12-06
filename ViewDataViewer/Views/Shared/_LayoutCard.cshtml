@@ -1,0 +1,37 @@
+﻿@{ 
+    this.Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section title
+{
+    @if (IsSectionDefined("title"))
+    {
+        @RenderSection("title", true)
+    }
+}
+
+@section navtext
+{
+    @if (IsSectionDefined("navtext"))
+    {
+        @RenderSection("navtext", false)
+    }
+}
+
+@section scripts
+{
+    @if (IsSectionDefined("scripts"))
+    {
+        @RenderSection("scripts", false)
+    }
+}
+
+<div class="row">
+<div class="col">
+<div class="card card-page">
+<div class="card-body">
+@RenderBody()
+</div>
+</div>
+</div>
+</div>

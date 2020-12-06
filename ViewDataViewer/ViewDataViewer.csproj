@@ -1,0 +1,82 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="wwwroot\css\framework_bundle.css" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\css\Colours.scss" />
+    <None Include="wwwroot\css\Site.css" />
+    <None Include="wwwroot\css\Site.min.css" />
+    <None Include="wwwroot\css\Site.scss" />
+    <None Include="wwwroot\documents\Acorn_PrestelSystemUG.pdf" />
+    <None Include="wwwroot\documents\en_300706v010201p.pdf" />
+    <None Include="wwwroot\documents\Prestel Bulk Update Technical Specification Part 1.pdf" />
+    <None Include="wwwroot\documents\Prestel_Telesoft_Protocol_Low_Res.pdf" />
+    <None Include="wwwroot\documents\SAA5050.pdf" />
+    <None Include="wwwroot\images\CCl4.png" />
+    <None Include="wwwroot\images\Display.png" />
+    <None Include="wwwroot\images\download.png" />
+    <None Include="wwwroot\images\input.png" />
+    <None Include="wwwroot\images\input2.png" />
+    <None Include="wwwroot\images\NXTel.png" />
+    <None Include="wwwroot\images\saved_frames.png" />
+    <None Include="wwwroot\images\start_download.png" />
+    <None Include="wwwroot\images\Teefax.png" />
+    <None Include="wwwroot\images\Telstar.png" />
+    <None Include="wwwroot\js\app_legacy\Hub.js" />
+    <None Include="wwwroot\js\app_legacy\Main.js" />
+    <None Include="wwwroot\js\app_legacy\Mode7.js" />
+    <None Include="wwwroot\js\app_legacy\Mullard.js" />
+    <None Include="wwwroot\js\app_legacy\Storage.js" />
+    <None Include="wwwroot\js\app_legacy\Telesoft.js" />
+    <None Include="wwwroot\js\app_legacy\Terminal.js" />
+    <None Include="wwwroot\js\app_legacy\Terminal_Input.js" />
+    <None Include="wwwroot\js\app_legacy\Terminal_Position.js" />
+    <None Include="wwwroot\js\app_ts\EditorMain.js" />
+    <None Include="wwwroot\js\app_ts\EditorMain.js.map" />
+    <None Include="wwwroot\js\app_ts\EditorViews.js" />
+    <None Include="wwwroot\js\app_ts\EditorViews.js.map" />
+    <None Include="wwwroot\js\app_ts\Hub.js" />
+    <None Include="wwwroot\js\app_ts\Hub.js.map" />
+    <None Include="wwwroot\js\app_ts\Logger.js" />
+    <None Include="wwwroot\js\app_ts\Logger.js.map" />
+    <None Include="wwwroot\js\app_ts\Main.js" />
+    <None Include="wwwroot\js\app_ts\Main.js.map" />
+    <None Include="wwwroot\js\app_ts\Mode7.js" />
+    <None Include="wwwroot\js\app_ts\Mode7.js.map" />
+    <None Include="wwwroot\js\app_ts\Mullard.js" />
+    <None Include="wwwroot\js\app_ts\Mullard.js.map" />
+    <None Include="wwwroot\js\app_ts\Storage.js" />
+    <None Include="wwwroot\js\app_ts\Storage.js.map" />
+    <None Include="wwwroot\js\app_ts\SvgRenderer.js" />
+    <None Include="wwwroot\js\app_ts\SvgRenderer.js.map" />
+    <None Include="wwwroot\js\app_ts\Telesoft.js" />
+    <None Include="wwwroot\js\app_ts\Telesoft.js.map" />
+    <None Include="wwwroot\js\app_ts\Terminal.js" />
+    <None Include="wwwroot\js\app_ts\Terminal.js.map" />
+    <None Include="wwwroot\js\app_ts\Views.js" />
+    <None Include="wwwroot\js\app_ts\Views.js.map" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.TypeScript.MSBuild" Version="4.1.2">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="NLog" Version="4.7.5" />
+    <PackageReference Include="NLog.Web.AspNetCore" Version="4.9.3" />
+    <PackageReference Include="System.Text.Json" Version="5.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\css\bundles\" />
+    <Folder Include="wwwroot\css\img\" />
+    <Folder Include="wwwroot\js\bundles\" />
+  </ItemGroup>
+
+</Project>

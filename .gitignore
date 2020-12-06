@@ -1,0 +1,9 @@
+node_modules/
+PublishProfiles/
+ServiceDependencies/
+*.pubxml
+.vs/
+*.user
+bin/
+obj/
+libs/

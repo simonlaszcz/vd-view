@@ -1,0 +1,441 @@
+﻿@{ 
+    this.Layout = "~/Views/Shared/_LayoutCard.cshtml";
+}
+
+@section title
+{
+vd-view help
+}
+
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item">
+        <a class="nav-link active" id="intro-tab" data-toggle="tab" href="#intro" role="tab" aria-controls="intro" aria-selected="true">Hello</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" id="viewer-tab" data-toggle="tab" href="#viewer" role="tab" aria-controls="viewer" aria-selected="false">Viewer</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" id="editor-tab" data-toggle="tab" href="#editor" role="tab" aria-controls="editor" aria-selected="false">Editor</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" id="refs-tab" data-toggle="tab" href="#refs" role="tab" aria-controls="refs" aria-selected="false">References</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" id="history-tab" data-toggle="tab" href="#history" role="tab" aria-controls="history" aria-selected="false">History</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" id="cookies-tab" data-toggle="tab" href="#cookies" role="tab" aria-controls="cookies" aria-selected="false">Cookies</a>
+    </li>
+</ul>
+<div class="tab-content">
+    <div class="tab-pane fade show active" id="intro" role="tabpanel" aria-labelledby="intro-tab">
+        <div class="alert alert-info">
+            <h6>A quick note about connection timeouts</h6>
+            <p>To maximise site performance and reduce hosting costs, the following limits are imposed:</p>
+            <ol>
+                <li>Inactive connections will be disconnected after @(ViewDataViewer.Core.TcpServletProvider.MaxInactiveMins) minutes of inactivity. Activity includes data sent and received, so for example, a TeeFax session will remain open as the TeeFax service pushes frequent updates. </li>
+                <li>All connections are subject to a @(ViewDataViewer.Core.TcpServletProvider.MaxOpenMins / 60) hour maximum.</li>
+                <li>In this context a <i>connection</i> refers to communication with a Viewdata service.</li>
+            </ol>
+            <p>In both instances you're welcome to immediately open another connection.</p>
+        </div>
+
+        <h5 class="mt-3">Contact</h5>
+        <p>Feel free to contact <a href="mailto:vd-view@laszcz.xyz">me (Simon Laszcz)</a> with any queries, suggestions, comments or bug reports.</p>
+
+        <h5>Disclaimer</h5>
+        <p>The site is provided in good faith for entertainment and maybe some education. The site is not responsible for the content of the sites and services made available and is not responsible for any views expressed therein.</p>
+        <p>The site does not seek to infringe any copyrights, trademarks or intellectual property rights. Please <a href="mailto:vd-view@laszcz.xyz">contact</a> the site if you feel that your rights have been infringed in any way.</p>
+    </div>
+    <div class="tab-pane fade" id="viewer" role="tabpanel" aria-labelledby="viewer-tab">
+        <h5>Introduction</h5>
+        <p>
+            <b>vd-view</b> is a <a target="_blank" href="https://en.wikipedia.org/wiki/Viewdata">Viewdata/Videotex</a> web client that can connect to the services listed below.
+        </p>
+
+        <div class="row mt-3 mb-3">
+            <div class="col-12 col-sm-6 col-lg-3 text-center">
+                <img src="~/Images/NXTel.png" class="img-fluid" />
+                <h6><a href="https://github.com/Threetwosevensixseven/NXtel" target="_blank">NXTel</a></h6>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-3 text-center">
+                <img src="~/Images/Teefax.png" class="img-fluid" />
+                <h6><a href="http://www.xenoxxx.com/" target="_blank">TeeFax</a></h6>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-3 text-center">
+                <img src="~/Images/Telstar.png" class="img-fluid" />
+                <h6><a href="https://glasstty.com/wiki/index.php/The_TELSTAR_Videotex_System" target="_blank">TELSTAR</a></h6>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-3 text-center">
+                <img src="~/Images/CCl4.png" class="img-fluid" />
+                <h6><a href="http://fish.ccl4.org/java/" target="_blank">Tetrachloromethane (CCl4)</a></h6>
+            </div>
+        </div>
+
+        <div class="alert alert-info">
+            <ul class="list-unstyled">
+                <li><a href="http://www.xenoxxx.com/" target="_blank">TeeFax</a> also has it's own web viewer.</li>
+                <li><a href="https://glasstty.com/wiki/index.php/The_TELSTAR_Videotex_System" target="_blank">TELSTAR</a> has three connection options:
+                    <ul>
+                        <li><b>Fast</b> gives an unthrottled connection</li>
+                        <li><b>Slow</b> throttles the connection to simulate the network speeds typical in the 1980s</li>
+                        <li><b>Test</b> demonstrates new features</li>
+                    </ul>
+                </li>
+                <li><a href="http://fish.ccl4.org/java/" target="_blank">Tetrachloromethane</a> has a long established web client of its own.</li>
+            </ul>
+        </div>
+
+        <h5>Usage</h5>
+        <div class="row">
+            <div class="col-12 col-md-4 mb-3">
+                <img class="img-fluid" src="~/Images/Display.png" />     
+            </div>
+            <div class="col-12 col-md-8">
+                <p>Read the <a target="_blank" href="~/Documents/Acorn_PrestelSystemUG.pdf">Acorn Prestel System User Guide</a> to get a feel for how Viewdata clients work.</p>
+                <p>Some Viewdata frames may contain flashing/blinking text. It's disabled by default but can be enabled using the <b>Enable Flashing</b> option.</p>      
+                <p>Click <kbd><i class="fas fa-image"></i></kbd> to save an image of the current frame. These will be listed in your downloads.</p>              
+                <p>On large displays, click <kbd><i class="fas fa-expand"></i></kbd> for a full screen display. Some useful keyboard shortcuts are listed later on. Swipe down to exit full screen mode.</p>
+            </div>
+        </div>
+
+        <div class="row mt-3">
+            <div class="col-12 col-md-4 mb-3">
+                <img class="img-fluid" src="~/Images/input.png" />
+                <img class="img-fluid mt-1" src="~/Images/input2.png" />
+            </div>
+            <div class="col-12 col-md-8">
+                <p>Select a service then click <kbd>Connect</kbd>. There will then be a short pause while the main index page is loaded.</p>
+                <p>You can navigate between pages using several methods.</p>
+                <p>Menu frames display a list of pages or categories and you select one by entering the corresponding menu number, e.g. <kbd>1</kbd></p>
+                <p>Most pages also allow you to navigate directly to another page and you do so by entering <kbd>*nnnn#</kbd>, where <var>nnn</var> is the page number.</p>
+            </div>
+        </div>            
+
+        <p>You can either enter text directly or you can use the input and command buttons. Shortcuts are also given for some common Viewdata commands.</p>
+
+        <p class="alert alert-warning">On mobile browsers you're limited to using the input field and shortcuts</p>
+
+        <dl class="row">
+            <dt class="col-12 col-md-3"><kbd><i class="fas fa-long-arrow-alt-right"></i>/#</kbd></dt>
+            <dd class="col-12 col-md-9">Sends the contents of the input field, appended with '#'. Just '#' is sent when the field is empty. '#' can often be used instead of <kbd>&crarr;</kbd> and is often used to continue to the next frame.</dd>
+            <dt class="col-12 col-md-3"><kbd><i class="fas fa-backward"></i></kbd></dt>
+            <dd class="col-12 col-md-9">Sends '*#'. Often used to go back to the previous page or frame.</dd>
+            <dt class="col-12 col-md-3"><kbd><i class="fas fa-home"></i></kbd></dt>
+            <dd class="col-12 col-md-9">Sends '*0#'. Go back to the Main Index Page.</dd>
+            <dt class="col-12 col-md-3"><kbd><i class="fas fa-redo"></i></kbd></dt>
+            <dd class="col-12 col-md-9">Sends '*00#'. Reload the current frame. In a real Prestel system the user would be charged for each page. This command allowed you to refresh a corrupt frame free of charge.</dd>
+            <dt class="col-12 col-md-3"><kbd><i class="fas fa-sync"></i></kbd></dt>
+            <dd class="col-12 col-md-9">Sends '*09#'. Update the current frame. In a real Prestel system this would update a frame (e.g. one that contained real-time stock prices) in contrast to merely refreshing it.</dd>
+            <dt class="col-12 col-md-3"><kbd>0..9</kbd></dt>
+            <dd class="col-12 col-md-9">Send one of the digits, e.g. if selecting a menu option.</dd>
+            <dt class="col-12 col-md-3"><kbd>Reveal</kbd></dt>
+            <dd class="col-12 col-md-9">Some frames contain content that is initially hidden (e.g. a quiz). This command reveals it. Use <kbd>Alt+R</kbd> when in full screen mode.</dd>
+            <dt class="col-12 col-md-3"><kbd><i class="fas fa-save"></i></kbd></dt>
+            <dd class="col-12 col-md-9">The saves the current frame to local browser storage so that you can view it offline.</dd>
+            <dt class="col-12 col-md-3"><kbd>Connect</kbd> or <kbd>Disconnect</kbd></dt>
+            <dd class="col-12 col-md-9">Either connect to, or hard disconnect from the server. When disconnecting, log off postamble is always sent to the host system.</dd>
+            <dt class="col-12 col-md-3"><kbd>Log Off</kbd></dt>
+            <dd class="col-12 col-md-9">Sends either '*90#' or 'FFF' depending on the current service. Some systems would require you to log off before ending the call with a hard disconnect. The user might have been alerted to new electronic mail for example.
+            CCl4 requests that you do this.</dd>
+        </dl>
+
+        <h6>TeeFax Only</h6>
+        <dl class="row">
+            <dt class="col-12 col-md-3"><kbd>Hold</kbd></dt>
+            <dd class="col-12 col-md-9">Sends 'H'. Pause the frame carousel. Use <kbd>Alt+H</kbd> in full screen mode.</dd>
+            <dt class="col-12 col-md-3"><kbd>Advance</kbd></dt>
+            <dd class="col-12 col-md-9">Sends '.'. Advance the frame carousel. Use <kbd>Alt+A</kbd> in full screen mode.</dd>
+            <dt class="col-12 col-md-3"><kbd>Clock</kbd></dt>
+            <dd class="col-12 col-md-9">Sends 'T'. Toggle the header row between clock and FastText labels.</dd>
+            <dt class="col-12 col-md-3"><kbd>Guide</kbd></dt>
+            <dd class="col-12 col-md-9">Sends 'Y'. Load the relevant index page.</dd>
+            <dt class="col-12 col-md-3"><kbd>Red</kbd></dt>
+            <dd class="col-12 col-md-9">Sends 'U'. FastText red button.</dd>
+            <dt class="col-12 col-md-3"><kbd>Green</kbd></dt>
+            <dd class="col-12 col-md-9">Sends 'I'. FastText green button.</dd>
+            <dt class="col-12 col-md-3"><kbd>Yellow</kbd></dt>
+            <dd class="col-12 col-md-9">Sends 'O'. FastText yellow button.</dd>
+            <dt class="col-12 col-md-3"><kbd>Blue</kbd></dt>
+            <dd class="col-12 col-md-9">Sends 'P'. FastText blue button.</dd>
+        </dl>
+
+        <div class="alert alert-info">
+            <h6>Full Screen Mode</h6>
+            <ol>
+                <li>Swipe down to exit full screen mode.</li>
+                <li>Swipe left to advance to the next frame (where applicable).</li>
+                <li>Swipe right to return to the previous frame (where applicable).</li>
+                <li>Tap to hold the current frame (Teletext only).</li>
+            </ol>
+        </div>
+
+        <div class="row">
+            <div class="col-12 col-md-4 mb-3">
+                <img class="img-fluid" src="~/Images/saved_frames.png" />  
+            </div>
+            <div class="col-12 col-md-8">
+                <p>Your saved frames are displayed in this section. Click <kbd><i class="fas fa-file-import"></i></kbd> to display a frame. If you load a frame while connected, you can reload the current frame using <kbd><i class="fas fa-redo"></i></kbd>. 
+                Click <kbd><i class="fas fa-trash-alt"></i></kbd> to remove a frame.</p>        
+            </div>
+        </div>
+
+        <h5>Telesoftware</h5>
+        <div class="row">
+            <div class="col-12 col-md-4 mb-3">
+                <img class="img-fluid" src="~/Images/start_download.png" />
+            </div>
+            <div class="col-12 col-md-8">
+                <p>Click <kbd>Start Download</kbd> on the header frame (usually the frame after the description frame) of the program you want to download. Use <kbd>Alt+D</kbd> when in full screen mode. The client will retrieve each frame. The complete download will be stored in your downloads.</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12 col-md-4 mb-3">
+                <img class="img-fluid" src="~/Images/download.png" />
+            </div>
+            <div class="col-12 col-md-8">
+                <p>Clicking <kbd>Save</kbd> will allow you to store the file on your computer. You may have to rename the saved file to use it in an emulator (e.g. <a target="_blank" href="http://www.mkw.me.uk/beebem/">BeebEm</a>).</p>
+            </div>
+        </div>
+    </div>
+    <div class="tab-pane fade" id="editor" role="tabpanel" aria-labelledby="editor-tab">
+        <h5>Introduction</h5>
+        <p>The editor uses the same viewdata processor as the viewer. 
+        The processor is probably less than 100% compliant and probably contains a few bugs. One such bug is that the final row of a Telstar frame is rendered without full-width background colour.
+        Otherwise, to the best of my knowledge, the processor works well with the currently available services.                
+        </p>
+        <p>The editor appends changes to the end of the byte stream. 
+        For example, you might backspace and overwrite a few characters but all characters will exist in the stream. In this sense, it's like a one-way stream of bytes sent to a client <i>over the wire</i>.</p>
+        <p>The bytes sent to a Viewdata client are a mix of terminal control codes (e.g. backspace, tab), Teletext control codes (which are preceded by an ESC character) and printable characters. 
+        A byte (ignoring negative numbers) is a number in the range 0 to 255. Terminal codes lie in the range 0 to 127 (although only a few are used). 
+        The other two groups lie in the range 128 to 255 (but not all are used). Terminal codes affect the printing position (and the cursor if it's shown) and once processed are discarded by the processor.
+        If the processor determines that a byte is not a terminal code (i.e. it's greater than 127) it will treat it as one of the final two groups of codes. It will discard the highest bit leaving a number in the range 0 to 127. 
+        See the <a target="_blank" href="~/Documents/SAA5050.pdf">Mullard SAA5050 Teletext Character Generator Specification</a> for a description of these codes.
+        </p>
+        <p>In the Teletext specification, control codes are called <i>Spacing Attributes</i> because once interpreted a space is output in lieu of the byte. You can <kbd>backspace</kbd> and overwrite the space if you wish.
+        Some control codes take immediate effect (set-at), while some take effect after the next character (set-after). Starting a new row or frame will reset the attributes to their defaults. Some attributes are changed by other attributes, e.g. changing text height.            
+        </p>
+        <p>
+        See <b>page 76</b> of <a target="_blank" href="https://www.etsi.org/deliver/etsi_i_ets/300700_300799/300706/01_60/ets_300706e01p.pdf">Enhanced Teletext specification (ETSI EN 300 706)</a> for a detailed description of these attributes. 
+        Here are few recipes for performing some simple effects.
+        </p>
+
+        <h5>Recipes</h5>
+        <dl>
+            <dt>Show the cursor</dt>
+            <dd>By default the cursor is hidden. Click <kbd>Cursor ON</kbd> to display it. It can be shown or hidden at will.</dd>
+
+            <dt class="mt-3">Move the Cursor</dt>
+            <dd>Writing control codes and printable characters will advance the cursor automatically but you can also move it around using terminal codes <kbd>BS, HT, VT, LF</kbd>. 
+            You can use your cursor keys for these but you'll need to use the onscreen panel for the others.
+            Note that <kbd>CR</kbd> (carriage return) moves the cursor to the start of the current row. 
+            <kbd>FF</kbd> (form feed) clears the screen and moves the cursor to the start of the frame.
+            <kbd>RS</kbd> (record separator ) moves the cursor to the start of the frame without clearing the screen. Note that the screen doesn't scroll and the cursor will wrap around. 
+            When transmission speeds were slow, it may have been important to move the cursor using as few bytes as possible.
+            </dd>
+
+            <dt class="mt-3">Writing text</dt>
+            <dd>Use your keyboard or the onscreen panel.</dd>
+
+            <dt class="mt-3">Changing text colour</dt>
+            <dd><kbd>ESC</kbd> followed by an alpha (denoted by <kbd>A</kbd>) colour code.</dd>
+
+            <dt class="mt-3">Changing background colour</dt>
+            <dd><kbd>ESC</kbd> <kbd>A (colour)</kbd> <kbd>ESC</kbd> <kbd>New BG</kbd></dd>
+
+            <dt class="mt-3">Reset the background colour to black</dt>
+            <dd><kbd>ESC</kbd> <kbd>Black BG</kbd></dd>
+
+            <dt class="mt-3">Writing mosaic (graphics) characters</dt>
+            <dd><kbd>ESC</kbd> <kbd>M (colour)</kbd>. This will switch the character set. Use the onscreen panel. They also map to letters in the range a-z on the keyboard but you'll need a good memory for this. 
+            Mosaics come in two forms. Contiguous (default) and separated (with extra padding). Use <kbd>ESC</kbd> <kbd>Contig. OFF</kbd> and <kbd>ESC</kbd> <kbd>Contig. ON</kbd> to switch between the two.
+            </dd>
+
+            <dt class="mt-3">Write a span of flashing characters</dt>
+            <dd><kbd>ESC</kbd> <kbd>Flash ON</kbd> followed by your text. Turn off flashing with <kbd>ESC</kbd> <kbd>Flash OFF</kbd>.
+            </dd>
+
+            <dt class="mt-3">Write hidden text</dt>
+            <dd><kbd>ESC</kbd> <kbd>Conceal ON</kbd> followed by your text. This attribute persists until the start of a new row or frame. The text remains hidden to the user unless they press <kbd>Reveal</kbd>.
+            </dd>
+
+            <dt class="mt-3">Write double height text</dt>
+            <dd><kbd>ESC</kbd> <kbd>Double Height</kbd> followed by your text. Double height persists until <kbd>ESC</kbd> <kbd>Normal Height</kbd> is issued or the start of a new row or frame.
+            </dd>
+
+            <dt class="mt-3">Holding mosaic characters</dt>
+            <dd>There may be situations where you want to change attributes and continue to output mosaics instead of the space that would normally be output in lieu of a control code. 
+            Issuing <kbd>ESC</kbd> <kbd>Mosaic HOLD</kbd> will cache the last mosaic printed and use it instead of the spaces written for control codes. 
+            This attribute persists until <kbd>ESC</kbd> <kbd>Mosaic RELEASE</kbd> is issued or the start of a new row or frame.
+            </dd>
+
+            <dt class="mt-3">Save work in progress</dt>
+            <dd>Clicking <kbd><i class="fas fa-save"></i></kbd> will add the current frame to your list of saved frames. The thumbnail there has options to load, copy as base 64 encoded text or delete.
+            </dd>
+
+            <dt class="mt-3">Import base 64 encoded frame data</dt>
+            <dd>Paste the encoded text into the onscreen panel then click <kbd>64</kbd>.
+            </dd>
+
+            <dt class="mt-3">Copy the current frame as base 64</dt>
+            <dd>As well as from the saved frame panel, you can also do this from the onscreen panel using <kbd><i class="fas fa-copy"></i></kbd>.
+            </dd>
+
+            <dt class="mt-3">Undo the last byte sent</dt>
+            <dd>Clicking <kbd><i class="fas fa-undo"></i></kbd> will undo the last byte sent. Consequently it may just undo a control code or just an ESC. You're advised to save your frame regularly.
+            </dd>
+        </dl>
+    </div>
+    <div class="tab-pane fade" id="refs" role="tabpanel" aria-labelledby="refs-tab">
+        <ol>
+            <li><a target="_blank" href="~/Documents/SAA5050.pdf">Mullard SAA5050 Teletext Character Generator Specification</a></li>
+            <li><a target="_blank" href="~/Documents/Acorn_PrestelSystemUG.pdf">Acorn Prestel System User Guide</a></li>
+            <li><a target="_blank" href="https://www.etsi.org/deliver/etsi_i_ets/300700_300799/300706/01_60/ets_300706e01p.pdf">Enhanced Teletext specification (ETSI EN 300 706)</a></li>
+            <li><a target="_blank" href="~/Documents/Prestel_Telesoft_Protocol_Low_Res.pdf">Prestel Telesoft Protocol</a></li>
+            <li><a target="_blank" href="~/Documents/Prestel Bulk Update Technical Specification Part 1.pdf">Prestel Bulk Update Technical Specification Part 1</a></li>
+            <li><a href="https://bjh21.me.uk/bedstead/" target="_blank">Bedstead Mode 7 Font</a></li>
+        </ol>
+    </div>
+    <div class="tab-pane fade" id="history" role="tabpanel" aria-labelledby="history-tab">
+        <h5>5 November 2020</h5>
+        <ul>
+            <li>Bug Fix: the viewer intermittently failed to load in Firefox.</li>
+        </ul>
+
+        <h5>29 October 2020</h5>
+        <ul>
+            <li>CSS tweaks and a garish background gradient.</li>                
+            <li>General maintenance and performance changes.</li>
+        </ul>
+
+        <h5>28 August 2020</h5>
+        <ul>
+            <li>Added a simple Viewdata editor. See the <a href="/Home/Help#editor">Help</a> page for more details.</li>
+        </ul>
+
+        <h5>14 July 2020</h5>
+        <ul>
+            <li>Viewdata is now rendered using Scalable Vector Graphics (SVG). This should give a sharper display that scales better across various screen sizes and makes better use of screen space.</li>
+        </ul>
+
+        <h5>1 July 2020</h5>
+        <ul>
+            <li>You can now use FastText buttons on TeeFax.</li>
+            <li>The log window has been removed as it was probably just a distraction. Log messages are written to the developer tools console instead.</li>
+        </ul>
+
+        <h5>February 2019</h5>
+        <p>
+            Initial release.
+        </p>
+    </div>
+    <div class="tab-pane fade" id="cookies" role="tabpanel" aria-labelledby="cookies-tab">
+        <p>The site uses the following cookies and local storage:</p>
+
+        <h5>ASPXAUTH</h5>
+        <dl class="row">
+            <dt class="col-sm-4 col-lg-3">Type</dt>
+            <dd class="col-sm-8 col-lg-9">Session</dd>
+
+            <dt class="col-sm-4 col-lg-3">Expiration</dt>
+            <dd class="col-sm-8 col-lg-9">User controlled</dd>
+
+            <dt class="col-sm-4 col-lg-3">Shared</dt>
+            <dd class="col-sm-8 col-lg-9">Never</dd>
+
+            <dt class="col-sm-4 col-lg-3">Purpose</dt>
+            <dd class="col-sm-8 col-lg-9">Every visitor to the site is assigned a random id (a GUID). This is used to associate them with a TCP client running on the site's server. You may remove the cookie, in which case it will be regenerated when you refresh the page.</dd>
+        </dl>
+
+        <h5>ai_session</h5>
+        <dl class="row">
+            <dt class="col-sm-4 col-lg-3">Type</dt>
+            <dd class="col-sm-8 col-lg-9">Session</dd>
+
+            <dt class="col-sm-4 col-lg-3">Expiration</dt>
+            <dd class="col-sm-8 col-lg-9">Every 30 minutes</dd>
+
+            <dt class="col-sm-4 col-lg-3">Shared</dt>
+            <dd class="col-sm-8 col-lg-9">Never</dd>
+
+            <dt class="col-sm-4 col-lg-3">Purpose</dt>
+            <dd class="col-sm-8 col-lg-9">Microsoft Azure telemetry</dd>
+        </dl>
+
+        <h5>ai_user</h5>
+        <dl class="row">
+            <dt class="col-sm-4 col-lg-3">Type</dt>
+            <dd class="col-sm-8 col-lg-9">Session</dd>
+
+            <dt class="col-sm-4 col-lg-3">Expiration</dt>
+            <dd class="col-sm-8 col-lg-9">After 1 year</dd>
+
+            <dt class="col-sm-4 col-lg-3">Shared</dt>
+            <dd class="col-sm-8 col-lg-9">Never</dd>
+
+            <dt class="col-sm-4 col-lg-3">Purpose</dt>
+            <dd class="col-sm-8 col-lg-9">Microsoft Azure telemetry</dd>
+        </dl>
+
+        <h5>SF_<i>number</i></h5>
+        <dl class="row">
+            <dt class="col-sm-4 col-lg-3">Type</dt>
+            <dd class="col-sm-8 col-lg-9">LocalStorage</dd>
+
+            <dt class="col-sm-4 col-lg-3">Expiration</dt>
+            <dd class="col-sm-8 col-lg-9">User controlled</dd>
+
+            <dt class="col-sm-4 col-lg-3">Shared</dt>
+            <dd class="col-sm-8 col-lg-9">Never</dd>
+
+            <dt class="col-sm-4 col-lg-3">Purpose</dt>
+            <dd class="col-sm-8 col-lg-9">Saved frames are stored in local storage in base64 format. They may be removed at any time by clicking the <kbd><i class="fas fa-trash-alt"></i></kbd> button.</dd>
+        </dl>
+
+        <h5>DL_<i>filename</i></h5>
+        <dl class="row">
+            <dt class="col-sm-4 col-lg-3">Type</dt>
+            <dd class="col-sm-8 col-lg-9">LocalStorage</dd>
+
+            <dt class="col-sm-4 col-lg-3">Expiration</dt>
+            <dd class="col-sm-8 col-lg-9">User controlled</dd>
+
+            <dt class="col-sm-4 col-lg-3">Shared</dt>
+            <dd class="col-sm-8 col-lg-9">Never</dd>
+
+            <dt class="col-sm-4 col-lg-3">Purpose</dt>
+            <dd class="col-sm-8 col-lg-9">Telesoft downloads are stored in local storage. They may be removed at any time by clicking <kbd>Remove</kbd>.</dd>
+        </dl>
+
+        <h5>EnableFlashing</h5>
+        <dl class="row">
+            <dt class="col-sm-4 col-lg-3">Type</dt>
+            <dd class="col-sm-8 col-lg-9">LocalStorage</dd>
+
+            <dt class="col-sm-4 col-lg-3">Expiration</dt>
+            <dd class="col-sm-8 col-lg-9">User controlled</dd>
+
+            <dt class="col-sm-4 col-lg-3">Shared</dt>
+            <dd class="col-sm-8 col-lg-9">Never</dd>
+
+            <dt class="col-sm-4 col-lg-3">Purpose</dt>
+            <dd class="col-sm-8 col-lg-9">User interface state</dd>
+        </dl>
+
+        <h5>Version</h5>
+        <dl class="row">
+            <dt class="col-sm-4 col-lg-3">Type</dt>
+            <dd class="col-sm-8 col-lg-9">LocalStorage</dd>
+
+            <dt class="col-sm-4 col-lg-3">Expiration</dt>
+            <dd class="col-sm-8 col-lg-9">User controlled</dd>
+
+            <dt class="col-sm-4 col-lg-3">Shared</dt>
+            <dd class="col-sm-8 col-lg-9">Never</dd>
+
+            <dt class="col-sm-4 col-lg-3">Purpose</dt>
+            <dd class="col-sm-8 col-lg-9">Local storage structure version number</dd>
+        </dl>
+    </div>
+</div>

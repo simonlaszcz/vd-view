@@ -1,0 +1,28 @@
+﻿<div class="row mt-2" data-bind="visible: SavedFrames().length > 0" style="display: none;">
+    <div class="col-12 saved-frames">
+        <div class="card card-dark bedstead">
+            <div class="card-header">Saved Frames</div>
+            <div class="card-body bedstead bedstead-small">
+                <ul id="saved-frames" data-bind="foreach: SavedFrames">
+                    <li>
+                        <div class="viewdata-preview-wrapper mb-3 pt-3">
+                            <img alt="Saved Frame" src="" width="160" height="125" data-bind="attr: {src: uri}" />
+
+                            <div class="row mt-3">
+                                <div class="col pr-0">
+                                    <button title="Load" class="btn btn-sm btn-block" data-bind="click: $root.LoadSavedFrame.bind($index(), $index())"><i class="fas fa-file-import"></i></button>
+                                </div>
+                                <div class="col pl-0 pr-0">
+                                    <button title="Copy" class="btn btn-sm btn-block" data-bind="click: $root.CopySavedFrame.bind($index(), $index())"><i class="fas fa-copy"></i></button>
+                                </div>
+                                <div class="col pl-0">
+                                    <button title="Remove" class="btn btn-sm btn-block" data-bind="click: $root.RemoveSavedFrame.bind($index(), $index())"><i class="fas fa-trash-alt"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
