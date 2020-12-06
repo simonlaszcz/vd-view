@@ -1,0 +1,226 @@
+﻿@section title
+{
+vd-view viewdata editor
+}
+
+<div class="row mt-2">
+    <div class="col">
+        <div data-bind="with: View">
+            <div id="mainViewCard" class="card card-dark bedstead clearfix">
+                <div class="card-header">
+                    <span class="card-header-text" data-bind="text: $root.Header, attr: {title: $root.Header}">&nbsp;</span>
+                </div>
+                <div id="mainView" class="card-body viewdata-view-wrapper clearfix" tabindex="0" data-bind="event: {keydown: $root.Keyboard.OnKeyDown}, hasFocus: $root.IsViewFocused">
+                    <partial name="_KoSvgViewDataView" />
+                </div>
+                <div class="card-footer">
+                    <div class="row">
+                        <div class="col">
+                            <span class="switch-text">
+                                <span>Show Grid</span>
+                                <label class="switch text-normal">
+                                    <input type="checkbox" data-bind="checked: ShowGrid">
+                                    <span class="slider round"></span>
+                                </label>
+                            </span>&nbsp;&nbsp;
+
+                            <span class="switch-text">
+                                <span>Enable Flashing</span>
+                                <label class="switch text-normal">
+                                    <input type="checkbox" data-bind="checked: EnableFlash">
+                                    <span class="slider round"></span>
+                                </label>
+                            </span>  
+
+                            <a title="Save as image" class="float-right switch-text" href="#" data-bind="click: $root.SaveAsImage.bind()"><i class="fas fa-image"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="bedstead">
+            <div class="commands">
+                <div class="row no-gutters">
+                    <div class="col">
+                        <div class="input-group flat no-border">
+                            <label for="SendText" class="sr-only">Text to Send</label>
+                            <input name="SendText" type="text" class="form-control flat no-border" data-bind="value: Input, event: {keydown: OnKeyDown}" placeholder="Send text or import a base64 encoded frame" />                            
+                            <div class="input-group-append">
+                                <button title="Paste Base64" type="button" class="btn btn-dark flat" data-bind="click: SendBase64.bind(Input(), Input())">64</button>
+                                <button title="Send" type="button" class="btn btn-dark flat" data-bind="click: SendText.bind(Input(), Input())">#</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row no-gutters">
+                    <div class="col d-flex flex-row">
+                        <button class="btn btn-dark flat flex-fill" data-bind="click: ToggleReveal.bind(), css: {active: View.IsRevealed}" title="Show hidden content">Reveal</button>
+                        <button class="btn btn-dark flat flex-fill" data-bind="click: SaveFrame.bind()" title="Save frame"><i class="fas fa-save"></i></button>
+                        <button class="btn btn-dark flat flex-fill" data-bind="click: CopyCurrent.bind()" title="Copy as Base64"><i class="fas fa-copy"></i></button>
+                        <button class="btn btn-dark flat flex-fill" data-bind="click: Undo.bind(), enable: UndoStackSize() > 0" title="Undo"><i class="fas fa-undo"></i></button>
+                    </div>
+                </div>
+                <div class="row no-gutters">
+                    <div class="col d-flex flex-column">
+                        <button class="btn btn-dark flat" data-bind="click: $root.SendControl.bind(8, 8)">BS <i class="fas fa-arrow-left"></i></button>
+                        <button class="btn btn-dark flat" data-bind="click: $root.SendControl.bind(9, 9)">HT <i class="fas fa-arrow-right"></i></button>
+                        <button class="btn btn-dark flat" data-bind="click: $root.SendControl.bind(11, 11)">VT <i class="fas fa-arrow-up"></i></button>
+                        <button class="btn btn-dark flat" data-bind="click: $root.SendControl.bind(10, 10)">LF <i class="fas fa-arrow-down"></i></button>
+                        <button class="btn btn-dark flat" data-bind="click: $root.SendControl.bind(13, 13)">CR <i class="fas fa-level-down-alt fa-rotate-90"></i></button>
+                        <button class="btn btn-dark flat" data-bind="click: $root.SendControl.bind(12, 12)">FF <i class="fas fa-trash-alt"></i></button>
+                        <button class="btn btn-dark flat" data-bind="click: $root.SendControl.bind(30, 30)">RS <i class="fas fa-recycle"></i></button>
+                        <button class="btn btn-dark flat" data-bind="click: $root.SendControl.bind(17, 17), css: {active: View.Flags.IsCursorOn}">Cursor ON</button>    
+                        <button class="btn btn-dark flat" data-bind="click: $root.SendControl.bind(20, 20), css: {active: !View.Flags.IsCursorOn()}">Cursor OFF</button>
+                    </div>
+                    <div class="col d-flex flex-column">
+                        <button class="btn bg-red text-auto flat set-after" data-bind="click: $root.SendCode.bind(1, 1, true), css: {active: View.Flags.AlphaFgColour() == 1}">A</button>
+                        <button class="btn bg-green text-auto flat set-after" data-bind="click: $root.SendCode.bind(2, 2, true), css: {active: View.Flags.AlphaFgColour() == 2}">A</button>
+                        <button class="btn bg-yellow text-auto flat set-after" data-bind="click: $root.SendCode.bind(3, 3, true), css: {active: View.Flags.AlphaFgColour() == 3}">A</button>
+                        <button class="btn bg-blue text-auto flat set-after" data-bind="click: $root.SendCode.bind(4, 4, true), css: {active: View.Flags.AlphaFgColour() == 4}">A</button>
+                        <button class="btn bg-magenta text-auto flat set-after" data-bind="click: $root.SendCode.bind(5, 5, true), css: {active: View.Flags.AlphaFgColour() == 5}">A</button>
+                        <button class="btn bg-cyan text-auto flat set-after" data-bind="click: $root.SendCode.bind(6, 6, true), css: {active: View.Flags.AlphaFgColour() == 6}">A</button>
+                        <button class="btn bg-white text-auto flat row-default set-after" data-bind="click: $root.SendCode.bind(7, 7, true), css: {active: View.Flags.AlphaFgColour() == 7}">A</button>
+                        <div data-bind="attr: {'class': `btn-border flex-fill ${View.BgCss()} d-flex justify-content-center align-items-center text-auto`}">
+                            BG Colour
+                        </div>
+                    </div>
+                    <div class="col d-flex flex-column">
+                        <button class="btn bg-red text-auto flat set-after" data-bind="click: $root.SendCode.bind(17, 17, true), css: {active: View.Flags.MosaicFgColour() == 1}">M</button>
+                        <button class="btn bg-green text-auto flat set-after" data-bind="click: $root.SendCode.bind(18, 18, true), css: {active: View.Flags.MosaicFgColour() == 2}">M</button>
+                        <button class="btn bg-yellow text-auto flat set-after" data-bind="click: $root.SendCode.bind(19, 19, true), css: {active: View.Flags.MosaicFgColour() == 3}">M</button>
+                        <button class="btn bg-blue text-auto flat set-after" data-bind="click: $root.SendCode.bind(20, 20, true), css: {active: View.Flags.MosaicFgColour() == 4}">M</button>
+                        <button class="btn bg-magenta text-auto flat set-after" data-bind="click: $root.SendCode.bind(21, 21, true), css: {active: View.Flags.MosaicFgColour() == 5}">M</button>
+                        <button class="btn bg-cyan text-auto flat set-after" data-bind="click: $root.SendCode.bind(22, 22, true), css: {active: View.Flags.MosaicFgColour() == 6}">M</button>
+                        <button class="btn bg-white text-auto flat set-after" data-bind="click: $root.SendCode.bind(23, 23, true), css: {active: View.Flags.MosaicFgColour() == 7}">M</button>
+                        <div class="btn-border flex-fill bg-white d-flex justify-content-center align-items-center text-auto">
+                            <span data-bind="visible: View.Flags.IsMosaicHeld" style="display: none;">Held <span data-bind="text: View.Flags.HeldMosaic"></span></span>
+                        </div>
+                    </div>
+                    <div class="col d-flex flex-column">
+                        <button class="btn btn-dark flat flex-fill set-after" data-bind="click: $root.SendCode.bind(27, 27, false), css: {active: View.Flags.IsEscaped}">ESC</button>
+                        <button class="btn btn-dark flat row-default set-at" data-bind="click: $root.SendCode.bind(28, 28, true)">Black BG</button>       
+                        <button class="btn btn-dark flat set-at" data-bind="click: $root.SendCode.bind(29, 29, true)">New BG</button>                
+                        <button class="btn btn-dark flat row-default set-at" data-bind="click: $root.SendCode.bind(25, 25, true), css: {active: View.Flags.IsContiguous}">Contig. ON</button>                              
+                        <button class="btn btn-dark flat set-at" data-bind="click: $root.SendCode.bind(26, 26, true), css: {active: !View.Flags.IsContiguous()}">Contig. OFF</button>   
+                        <button class="btn btn-dark flat set-at" data-bind="click: $root.SendCode.bind(30, 30, true), css: {active: View.Flags.IsMosaicHeld}">Mosaic HOLD</button>                          
+                        <button class="btn btn-dark flat row-default set-after" data-bind="click: $root.SendCode.bind(31, 31, true)">Mosaic RELEASE</button>
+                        <button class="btn btn-dark flat set-after" data-bind="click: $root.SendCode.bind(13, 13, true), css: {active: View.Flags.IsDoubleHeight}">Double Height</button>                               
+                        <button class="btn btn-dark flat row-default set-at" data-bind="click: $root.SendCode.bind(12, 12, true), css: {active: !View.Flags.IsDoubleHeight()}">Normal Height</button>
+                    </div>
+                    <div class="col d-flex flex-column">
+                        <button class="btn btn-dark flat set-at" data-bind="click: $root.SendCode.bind(24, 24, true), css: {active: View.Flags.IsConcealed}">Conceal ON</button>
+                        <button class="btn btn-dark flat set-after" data-bind="click: $root.SendCode.bind(8, 8, true), css: {active: View.Flags.IsFlashing}">Flash ON</button>                            
+                        <button class="btn btn-dark flat row-default set-at" data-bind="click: $root.SendCode.bind(9, 9, true), css: {active: !View.Flags.IsFlashing()}">Flash OFF</button>
+                        <button class="btn btn-dark flat unused" data-bind="click: $root.SendCode.bind(15, 15, true)">Shift IN</button>
+                        <button class="btn btn-dark flat unused" data-bind="click: $root.SendCode.bind(14, 14, true)">Shift OUT</button>
+                        <button class="btn btn-dark flat unused set-after" data-bind="click: $root.SendCode.bind(11, 11, true)">Box ON</button>
+                        <button class="btn btn-dark flat row-default unused set-after" data-bind="click: $root.SendCode.bind(10, 10, true)">Box OFF</button>     
+                        <button class="btn btn-dark flat unused" data-bind="click: $root.SendCode.bind(0, 0, true)">NUL</button>
+                        <button class="btn btn-dark flat unused" data-bind="click: $root.SendCode.bind(16, 16, true)">DLE</button>                   
+                    </div>
+                </div>
+                <div class="row no-gutters" data-bind="with: View.ExoticCharacters">
+                    <div class="col d-flex flex-row flex-wrap">
+                        <!-- ko foreach: Column2 -->
+                        <button class="btn bg-white text-dark flat" data-bind="click: $root.SendCode.bind($data.nativeCode, $data.nativeCode, false), text: $data.char"></button>
+                        <!-- /ko --> 
+                    </div>
+                </div>
+                <div class="row no-gutters" data-bind="with: View.ExoticCharacters">
+                    <div class="col d-flex flex-row flex-wrap">
+                        <!-- ko foreach: Column3 -->
+                        <button class="btn bg-white text-dark flat" data-bind="click: $root.SendCode.bind($data.nativeCode, $data.nativeCode, false), text: $data.char"></button>
+                        <!-- /ko -->  
+                    </div>
+                </div>
+                <div class="row no-gutters" data-bind="with: View.ExoticCharacters">
+                    <div class="col d-flex flex-row flex-wrap">
+                        <!-- ko foreach: Column4 -->
+                        <button class="btn bg-white text-dark flat" data-bind="click: $root.SendCode.bind($data.nativeCode, $data.nativeCode, false), text: $data.char"></button>
+                        <!-- /ko -->  
+                    </div>
+                </div>
+                <div class="row no-gutters" data-bind="with: View.ExoticCharacters">
+                    <div class="col d-flex flex-row flex-wrap">
+                        <!-- ko foreach: Column5 -->
+                        <button class="btn bg-white text-dark flat" data-bind="click: $root.SendCode.bind($data.nativeCode, $data.nativeCode, false), text: $data.char"></button>
+                        <!-- /ko -->  
+                    </div>
+                </div>
+                <div class="row no-gutters" data-bind="with: View.ExoticCharacters">
+                    <div class="col d-flex flex-row flex-wrap">
+                        <!-- ko foreach: Column6 -->
+                        <button class="btn bg-white text-dark flat" data-bind="click: $root.SendCode.bind($data.nativeCode, $data.nativeCode, false), text: $data.char"></button>
+                        <!-- /ko -->  
+                    </div>
+                </div>
+                <div class="row no-gutters" data-bind="with: View.ExoticCharacters">
+                    <div class="col d-flex flex-row flex-wrap">
+                        <!-- ko foreach: Column7 -->
+                        <button class="btn bg-white text-dark flat" data-bind="click: $root.SendCode.bind($data.nativeCode, $data.nativeCode, false), text: $data.char"></button>
+                        <!-- /ko -->   
+                    </div>
+                </div>
+                <div class="row no-gutters">
+                    <div class="col p-2">
+                        <span class="switch-text text-white text-responsive d-block mb-2">
+                            <span>Auto Escape</span>
+                            <label class="switch text-normal">
+                                <input type="checkbox" data-bind="checked: AutoEscape">
+                                <span class="slider round"></span>
+                            </label>
+                        </span>
+                        <span class="set-after d-block mb-2"><span class="text-white text-responsive">&nbsp;Set After Next Character</span></span>
+                        <span class="set-after row-default d-block mb-2"><span class="text-white text-responsive">&nbsp;Set After Next Character (Row Default)</span></span>
+                        <span class="set-at d-block mb-2"><span class="text-white text-responsive">&nbsp;Set Immediately</span></span>
+                        <span class="set-at row-default d-block mb-2"><span class="text-white text-responsive">&nbsp;Set Immediately (Row Default)</span></span>
+                        <span class="unused d-block"><span class="text-white text-responsive">&nbsp;Reserved</span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<partial name="_SavedFrames" />
+
+<div id="downloads" class="row mt-2" data-bind="visible: Downloads().length > 0" style="display: none;">
+    <div class="col-12">
+        <div class="card card-dark bedstead">
+            <div class="card-header">Downloads</div>
+            <div class="card-body console-output-wrapper bedstead">
+                <div class="console-output">
+                    <ul data-bind="foreach: Downloads">
+                        <li><span data-bind="text: filename"></span> (<span data-bind="text: size"></span> bytes)
+                        <a href="#" data-bind="attr: {href: uri, download: filename}">Save</a>
+                        <a href="#" data-bind="click: $root.RemoveDownload.bind($index(), $index())">Remove</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<input id="Clipboard" type="text" data-bind="value: Clipboard" style="position: absolute; left: -1000px; top: -1000px; font-size: 1px;" />
+<canvas id="Canvas" style="display:none;"></canvas>
+
+@section scripts
+{
+    <script src="~/libs/requirejs/require.min.js?@Host.FileHash("~/libs/requirejs/require.min.js")"></script>
+    <script>
+        window.addEventListener('load', function () {
+            require.config({
+                paths: {
+                    main: '/js/bundles/editormain.bundle.js?@Host.FileHash("~/js/bundles/editormain.bundle.js")'
+                }
+            });
+
+            require(["main"], function () {
+                window.vdView.init();
+            });
+        });
+    </script>
+}

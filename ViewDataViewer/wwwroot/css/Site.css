@@ -1,0 +1,440 @@
+/*!
+ * vd-view site
+ */
+@font-face {
+  font-family: bedstead;
+  src: url(/fonts/bedstead-extended.otf) format("opentype");
+  font-stretch: expanded;
+  font-style: normal;
+  font-weight: normal;
+  font-display: fallback; }
+
+@font-face {
+  font-family: bedstead-double-height;
+  src: url(/fonts/bedstead-extracondensed.otf) format("opentype");
+  font-stretch: extra-condensed;
+  font-style: normal;
+  font-weight: normal;
+  font-display: fallback; }
+
+html, body {
+  height: 100%; }
+
+body {
+  background: linear-gradient(magenta, cyan);
+  background-repeat: no-repeat;
+  background-attachment: fixed; }
+
+.body-content {
+  padding-top: 56px;
+  padding-bottom: 4px;
+  min-height: calc(100% - 56px); }
+
+/* Fonts */
+/* Mobile XS default */
+.bedstead {
+  font-family: bedstead;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 8px;
+  line-height: 8px; }
+  .bedstead .double-height {
+    font-family: bedstead-double-height;
+    font-size: 16px;
+    line-height: 16px; }
+
+.bedstead-small {
+  font-size: 4px;
+  line-height: 4px; }
+  .bedstead-small .double-height {
+    font-family: bedstead-double-height;
+    font-size: 8px;
+    line-height: 8px; }
+
+@media (min-width: 576px) {
+  .bedstead {
+    font-family: bedstead;
+    font-weight: normal;
+    font-style: normal;
+    font-size: 10px;
+    line-height: 10px; }
+    .bedstead .double-height {
+      font-family: bedstead-double-height;
+      font-size: 20px;
+      line-height: 20px; }
+  .bedstead-small {
+    font-size: 5px;
+    line-height: 5px; }
+    .bedstead-small .double-height {
+      font-family: bedstead-double-height;
+      font-size: 10px;
+      line-height: 10px; } }
+
+@media (min-width: 768px) {
+  .bedstead {
+    font-family: bedstead;
+    font-weight: normal;
+    font-style: normal;
+    font-size: 20px;
+    line-height: 20px; }
+    .bedstead .double-height {
+      font-family: bedstead-double-height;
+      font-size: 40px;
+      line-height: 40px; }
+  .bedstead-small {
+    font-size: 5px;
+    line-height: 5px; }
+    .bedstead-small .double-height {
+      font-family: bedstead-double-height;
+      font-size: 10px;
+      line-height: 10px; } }
+
+@media all and (display-mode: fullscreen) {
+  .bedstead {
+    font-family: bedstead;
+    font-weight: normal;
+    font-style: normal;
+    font-size: 4vh;
+    line-height: 4vh;
+    letter-spacing: -1px; }
+    .bedstead .double-height {
+      font-family: bedstead-double-height;
+      font-size: 8vh;
+      line-height: 8vh; } }
+
+.svg-viewdata-view {
+  font-family: bedstead;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 20px;
+  line-height: 20px; }
+  .svg-viewdata-view .double-height {
+    font-family: bedstead-double-height;
+    font-size: 40px;
+    line-height: 40px; }
+
+/**********************
+    CARDS/STRUCTURE
+**********************/
+.card,
+.card-header,
+.card-footer {
+  border: none; }
+
+.card,
+.card-header,
+.card-header:first-child,
+.card-footer,
+.card-footer:last-child,
+.btn {
+  border-radius: 0;
+  box-shadow: none; }
+
+.card.card-dark .card-header,
+.card.card-dark .card-footer {
+  background-color: #222222;
+  color: #9d9d9d;
+  padding: 10px; }
+
+.card.card-dark .card-body {
+  background-color: black;
+  color: #9d9d9d; }
+
+.card-footer a,
+.card-footer a:hover,
+.card-header a,
+.card-header a:hover {
+  color: #9d9d9d; }
+
+.card:focus,
+.card-body:focus {
+  outline: none; }
+
+.card-header .card-header-text {
+  display: inline-block;
+  max-width: 90%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; }
+
+/********************
+    COMMAND SECTION
+********************/
+.commands {
+  background-color: #222222;
+  border: 2px solid #222222; }
+  .commands .btn {
+    border-color: #222222; }
+  .commands .btn, .commands input, .commands select {
+    border-radius: 0;
+    box-shadow: none; }
+  .commands .form-control {
+    border: none; }
+  .commands input:focus,
+  .commands select:focus {
+    outline: none; }
+
+/**************** 
+    Saved Frames
+****************/
+.saved-frames .btn {
+  color: #9d9d9d; }
+
+.saved-frames .viewdata-preview-wrapper {
+  border: 1px solid #9d9d9d; }
+
+.saved-frames img {
+  display: block;
+  margin: 0 auto; }
+
+/****************
+    Console
+****************/
+.console-output-wrapper {
+  padding: 10px; }
+
+.console-output {
+  height: 6em;
+  overflow-x: auto;
+  overflow-y: scroll; }
+  .console-output ul {
+    padding: 0;
+    list-style: none; }
+
+/**********************************
+    SWITCH - FROM W3 SCHOOLS ;-)
+    e.g.
+        <p class="switch-text">
+            <span>This</span>
+            <label class="switch text-normal">
+                <input type="checkbox">
+                <span class="slider round"></span> <!-- Opionally add a bg color here -->
+            </label>
+            <span>That</span>
+        </p>  
+**********************************/
+/* The switch - the box around the slider */
+.switch-text {
+  line-height: 1.5em;
+  white-space: nowrap; }
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 2.75em;
+  height: 1.5em;
+  margin: 0 !important;
+  vertical-align: middle; }
+
+/* Hide default HTML checkbox */
+.switch input {
+  display: none; }
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s; }
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 1em;
+  width: 1em;
+  left: 0.25em;
+  bottom: 0.25em;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s; }
+
+input:focus + .slider,
+input:focus + .help-block + .slider {
+  box-shadow: 0 0 1px; }
+
+input:checked:not(disabled) + .slider:before,
+input:checked:not(disabled) + .help-block + .slider:before {
+  -webkit-transform: translateX(1.25em);
+  -ms-transform: translateX(1.25em);
+  transform: translateX(1.25em); }
+
+input:not(checked):not(disabled) + .checkmark:before {
+  font-family: FontAwesome;
+  content: "\f00d";
+  color: transparent; }
+
+input:checked:not(disabled) + .checkmark:before {
+  font-family: FontAwesome;
+  content: "\f00c";
+  color: inherit; }
+
+input:disabled + .slider,
+input:disabled + .checkmark {
+  opacity: 0.65;
+  cursor: not-allowed; }
+
+input[disabled=""] + .slider,
+input[disabled=""] + .checkmark {
+  opacity: 0.65;
+  cursor: not-allowed; }
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 1em; }
+
+.slider.round:before {
+  border-radius: 1em; }
+
+/*************
+    VIEW
+*************/
+.viewdata-view-wrapper {
+  padding-top: 1em;
+  padding-bottom: 1em;
+  overflow: hidden;
+  position: relative; }
+
+.viewdata-preview-wrapper {
+  display: inline-block;
+  overflow: hidden;
+  width: 42em;
+  opacity: 0.8; }
+
+/************
+ TABLE BASED 
+************/
+.viewdata-view {
+  margin: 0 auto;
+  height: 25em; }
+
+.viewdata-view-row {
+  height: 1em;
+  vertical-align: top; }
+
+tr.viewdata-view-row td {
+  white-space: pre-wrap;
+  padding: 0; }
+
+@media not all and (display-mode: fullscreen) {
+  tr.viewdata-view-row td.mosaic {
+    text-shadow: -1px 0px; } }
+
+@media all and (display-mode: fullscreen) {
+  tr.viewdata-view-row td.mosaic {
+    text-shadow: 0px 1px; } }
+
+.show-grid tr.viewdata-view-row td {
+  border: 1px solid rgba(255, 255, 255, 0.25); }
+
+.card:focus .viewdata-view .cursor {
+  background-color: white;
+  color: black; }
+
+/*******************
+    Concealed Text
+*******************/
+.concealed > span {
+  color: transparent; }
+
+.revealed .concealed > span {
+  color: unset; }
+
+/*************
+    SVG VIEW
+*************/
+.svg-viewdata-view {
+  display: block;
+  margin: 0 auto;
+  height: 100%; }
+
+.svg-viewdata-view-grid .gcol, .svg-viewdata-view-grid .grow {
+  stroke: lightgrey;
+  stroke-dasharray: 1 4; }
+
+.svg-viewdata-view-grid .gcol-10, .svg-viewdata-view-grid .grow-10 {
+  stroke: darkgrey;
+  stroke-dasharray: none; }
+
+/**************
+Fluid Layout
+**************/
+.container-fluid #mainViewCard {
+  max-height: 90vh;
+  max-width: 117vh; }
+  .container-fluid #mainViewCard .viewdata-view-wrapper {
+    padding: 0.25em 0.5em 0.25em 0.5em; }
+    .container-fluid #mainViewCard .viewdata-view-wrapper .svg-viewdata-view {
+      max-height: 80vh; }
+
+.container-fluid .commands .btn {
+  white-space: pre; }
+
+@media (min-width: 992px) {
+  .container-fluid .commands .btn {
+    font-size: min(1vw, 14px);
+    padding-left: min(0.75vw, 12px);
+    padding-right: min(0.75vw, 12px); }
+  .container-fluid .text-responsive {
+    font-size: min(1vw, 14px); } }
+
+@media all and (display-mode: fullscreen) {
+  .container-fluid #mainViewCard .viewdata-view-wrapper .svg-viewdata-view {
+    max-height: unset; } }
+
+/*****************
+COMMAND BUTTONS
+*****************/
+.commands .btn.unused:before, .commands .btn.set-at:before, .commands .btn.set-after:before, .commands .btn.row-default:before, .commands span.unused:before, .commands span.set-at:before, .commands span.set-after:before, .commands span.row-default:before {
+  font-family: "Font Awesome 5 Free";
+  content: "\f0c8";
+  font-weight: 900;
+  float: left;
+  display: block;
+  padding-right: 2px; }
+
+.commands .btn.unused:before, .commands span.unused:before {
+  color: darkgray; }
+
+.commands .btn.set-after:before, .commands span.set-after:before {
+  color: darkorange; }
+
+.commands .btn.set-at:before, .commands span.set-at:before {
+  color: darkorchid; }
+
+.commands .btn.set-after.row-default:before, .commands span.set-after.row-default:before {
+  color: darkorange;
+  transform: rotate(-45deg); }
+
+.commands .btn.set-at.row-default:before, .commands span.set-at.row-default:before {
+  color: darkorchid;
+  transform: rotate(-45deg); }
+
+.commands .btn:not(.btn-dark) {
+  filter: brightness(100%); }
+  .commands .btn:not(.btn-dark).active {
+    filter: brightness(70%); }
+
+.commands .btn-border {
+  border: 1px solid #222222; }
+
+/***********
+TABS & CARDS
+***********/
+.card.card-page {
+  min-height: 100vh; }
+  .card.card-page .card-body {
+    padding-top: 2em; }
+    .card.card-page .card-body h5 {
+      text-decoration: underline; }
+  .card.card-page .tab-content {
+    padding-top: 1em; }
+
+@media (min-width: 1200px) {
+  .card.card-page {
+    width: 90%;
+    margin: 0 auto; } }

@@ -1,0 +1,14 @@
+﻿[
+  {
+    "outputFile": "Content/Colours.css",
+    "inputFile": "Content/Colours.scss"
+  },
+  {
+    "outputFile": "Content/Site.css",
+    "inputFile": "Content/Site.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/Colours.css",
+    "inputFile": "wwwroot/css/Colours.scss"
+  }
+]

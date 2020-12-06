@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <partial name="_Head" />
+    <title>@RenderSection("title", true)</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand pt-0" href="/Home/Index"><span>v</span><span>d</span><span>-</span><span>v</span><span>i</span><span>e</span><span>w</span></a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse text-uppercase" id="navbarText">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item"><a target="_blank" class="nav-link" href="/Home/Editor">Editor</a></li>
+                    <li class="nav-item"><a target="_blank" class="nav-link" href="/Home/Help">Help</a></li>
+                </ul>
+            </div>
+            <span class="navbar-text float-right d-none d-md-inline">@RenderSection("navtext", false)</span>
+        </div>
+    </nav>
+
+    <div class="container-fluid body-content">
+        <noscript>
+        <div class="alert alert-danger mt-2">
+            <p>This site relies on JavaScript but it's either disabled or not supported</p>
+        </div>
+        </noscript>
+
+        <div id="badBrowser" class="alert alert-danger mt-2" style="display: none;">
+            <p>Sorry, this site does not support Internet Explorer</p>
+        </div>
+
+        <main id="main" style="display: none;">
+        @RenderBody()
+        </main>
+    </div>
+    <script src="~/js/bundles/framework_bundle.js?@Host.FileHash("~/js/bundles/framework_bundle.js")"></script>
+    <script>
+        function badBrowser() {
+            return !!bowser.msie;
+        }
+
+        if (badBrowser()) {
+            document.getElementById('badBrowser').style.display = 'block';
+        }
+        else {
+            document.getElementById('main').style.display = 'block';
+        }
+    </script>
+    @RenderSection("scripts", required: false)
+</body>
+</html>

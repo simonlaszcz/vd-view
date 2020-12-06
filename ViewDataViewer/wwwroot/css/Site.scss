@@ -1,0 +1,599 @@
+﻿/*!
+ * vd-view site
+ */
+
+// Override Sass min()
+@function min($numbers...) {
+  @return m#{i}n(#{$numbers});
+}
+
+@font-face {
+    font-family: bedstead;
+    src: url(/fonts/bedstead-extended.otf) format('opentype');
+    font-stretch: expanded;
+    font-style: normal;
+    font-weight: normal;
+    font-display: fallback;
+}
+
+@font-face {
+    font-family: bedstead-double-height;
+    src: url(/fonts/bedstead-extracondensed.otf) format('opentype');
+    font-stretch: extra-condensed;
+    font-style: normal;
+    font-weight: normal;
+    font-display: fallback;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    background: linear-gradient(magenta, cyan);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.body-content {
+    padding-top: 56px;
+    padding-bottom: 4px;
+    min-height: calc(100% - 56px);
+}
+
+/* Fonts */
+/* Mobile XS default */
+
+.bedstead {
+    font-family: bedstead;
+    font-weight: normal;
+    font-style: normal;
+    font-size: 8px;
+    line-height: 8px;
+
+    .double-height {
+        font-family: bedstead-double-height;
+        font-size: 16px;
+        line-height: 16px;
+    }
+}
+
+.bedstead-small {
+    font-size: 4px;
+    line-height: 4px;
+
+    .double-height {
+        font-family: bedstead-double-height;
+        font-size: 8px;
+        line-height: 8px;
+    }
+}
+
+@media (min-width: 576px) {
+    .bedstead {
+        font-family: bedstead;
+        font-weight: normal;
+        font-style: normal;
+        font-size: 10px;
+        line-height: 10px;
+
+        .double-height {
+            font-family: bedstead-double-height;
+            font-size: 20px;
+            line-height: 20px
+        }
+    }
+
+    .bedstead-small {
+        font-size: 5px;
+        line-height: 5px;
+
+        .double-height {
+            font-family: bedstead-double-height;
+            font-size: 10px;
+            line-height: 10px;
+        }
+    }
+}
+
+@media (min-width: 768px) {
+    .bedstead {
+        font-family: bedstead;
+        font-weight: normal;
+        font-style: normal;
+        font-size: 20px;
+        line-height: 20px;
+
+        .double-height {
+            font-family: bedstead-double-height;
+            font-size: 40px;
+            line-height: 40px;
+        }
+    }
+
+    .bedstead-small {
+        font-size: 5px;
+        line-height: 5px;
+
+        .double-height {
+            font-family: bedstead-double-height;
+            font-size: 10px;
+            line-height: 10px;
+        }
+    }
+}
+
+@media all and (display-mode: fullscreen) {
+    .bedstead {
+        font-family: bedstead;
+        font-weight: normal;
+        font-style: normal;
+        font-size: 4vh;
+        line-height: 4vh;
+        letter-spacing: -1px;
+
+        .double-height {
+            font-family: bedstead-double-height;
+            font-size: 8vh;
+            line-height: 8vh;
+        }
+    }
+}
+
+.svg-viewdata-view {
+    font-family: bedstead;
+    font-weight: normal;
+    font-style: normal;
+    font-size: 20px;
+    line-height: 20px;
+
+    .double-height {
+        font-family: bedstead-double-height;
+        font-size: 40px;
+        line-height: 40px;
+    }
+}
+
+/**********************
+    CARDS/STRUCTURE
+**********************/
+
+.card,
+.card-header,
+.card-footer {
+    border: none;
+}
+
+.card,
+.card-header,
+.card-header:first-child,
+.card-footer,
+.card-footer:last-child,
+.btn {
+    border-radius: 0;
+    box-shadow: none;
+}
+
+    .card.card-dark .card-header,
+    .card.card-dark .card-footer {
+        background-color: rgb(34, 34, 34);
+        color: rgb(157, 157, 157);
+        padding: 10px;
+    }
+
+    .card.card-dark .card-body {
+        background-color: black;
+        color: rgb(157, 157, 157);
+    }
+
+    .card-footer a,
+    .card-footer a:hover,
+    .card-header a,
+    .card-header a:hover {
+        color: rgb(157, 157, 157);
+    }
+
+.card:focus,
+.card-body:focus {
+    outline: none;
+}
+
+.card-header .card-header-text {
+    display: inline-block;
+    max-width: 90%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/********************
+    COMMAND SECTION
+********************/
+
+.commands {
+    background-color: rgb(34, 34, 34);
+    border: 2px solid rgb(34, 34, 34);
+
+    .btn {
+        border-color: rgb(34, 34, 34);
+    }
+
+    .btn, input, select {
+        border-radius: 0;
+        box-shadow: none;
+    }
+
+    .form-control {
+        border: none;
+    }
+
+    input:focus,
+    select:focus {
+        outline: none;
+    }
+}
+
+/**************** 
+    Saved Frames
+****************/
+
+.saved-frames {
+    .btn {
+        color: rgb(157, 157, 157);
+    }
+
+    .viewdata-preview-wrapper {
+        border: 1px solid rgb(157, 157, 157);
+    }
+
+    img {
+        display: block;
+        margin: 0 auto;
+    }
+}
+
+/****************
+    Console
+****************/
+
+.console-output-wrapper {
+    padding: 10px;
+}
+
+.console-output {
+    height: 6em;
+    overflow-x: auto;
+    overflow-y: scroll;
+
+    ul {
+        padding: 0;
+        list-style: none;
+    }
+}
+
+/**********************************
+    SWITCH - FROM W3 SCHOOLS ;-)
+    e.g.
+        <p class="switch-text">
+            <span>This</span>
+            <label class="switch text-normal">
+                <input type="checkbox">
+                <span class="slider round"></span> <!-- Opionally add a bg color here -->
+            </label>
+            <span>That</span>
+        </p>  
+**********************************/
+
+/* The switch - the box around the slider */
+.switch-text {
+    line-height: 1.5em;
+    white-space: nowrap;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 2.75em;
+    height: 1.5em;
+    margin: 0 !important;
+    vertical-align: middle;
+}
+
+    /* Hide default HTML checkbox */
+    .switch input {
+        display: none;
+    }
+
+/* The slider */
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+    .slider:before {
+        position: absolute;
+        content: "";
+        height: 1em;
+        width: 1em;
+        left: 0.25em;
+        bottom: 0.25em;
+        background-color: white;
+        -webkit-transition: .4s;
+        transition: .4s;
+    }
+
+input:focus + .slider,
+input:focus + .help-block + .slider {
+    box-shadow: 0 0 1px;
+}
+
+input:checked:not(disabled) + .slider:before,
+input:checked:not(disabled) + .help-block + .slider:before {
+    -webkit-transform: translateX(1.25em);
+    -ms-transform: translateX(1.25em);
+    transform: translateX(1.25em);
+}
+
+input:not(checked):not(disabled) + .checkmark:before {
+    font-family: FontAwesome;
+    content: "\f00d";
+    color: transparent;
+}
+
+input:checked:not(disabled) + .checkmark:before {
+    font-family: FontAwesome;
+    content: "\f00c";
+    color: inherit;
+}
+
+input:disabled + .slider,
+input:disabled + .checkmark {
+    opacity: 0.65;
+    cursor: not-allowed;
+}
+
+input[disabled=""] + .slider,
+input[disabled=""] + .checkmark {
+    opacity: 0.65;
+    cursor: not-allowed;
+}
+
+/* Rounded sliders */
+.slider.round {
+    border-radius: 1em;
+}
+
+    .slider.round:before {
+        border-radius: 1em;
+    }
+
+/*************
+    VIEW
+*************/
+
+.viewdata-view-wrapper {
+    padding-top: 1em;
+    padding-bottom: 1em;
+    overflow: hidden;
+    position: relative;
+}
+
+.viewdata-preview-wrapper {
+    display: inline-block;
+    overflow: hidden;
+    width: 42em;
+    opacity: 0.8;
+}
+
+/************
+ TABLE BASED 
+************/
+
+.viewdata-view {
+    margin: 0 auto;
+    height: 25em;
+}
+
+.viewdata-view-row {
+    height: 1em;
+    vertical-align: top;
+}
+
+tr.viewdata-view-row td {
+    white-space: pre-wrap;
+    padding: 0;    
+}
+
+@media not all and (display-mode: fullscreen) {
+    tr.viewdata-view-row td.mosaic {
+        text-shadow: -1px 0px;
+    }
+}
+
+@media all and (display-mode: fullscreen) {
+    tr.viewdata-view-row td.mosaic {
+        text-shadow: 0px 1px;
+    }
+}
+
+.show-grid tr.viewdata-view-row td {
+    border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.card:focus .viewdata-view .cursor {
+    background-color: white;
+    color: black;
+}
+
+/*******************
+    Concealed Text
+*******************/
+
+.concealed > span {
+    color: transparent;
+}
+
+.revealed .concealed > span {
+    color: unset;
+}
+
+/*************
+    SVG VIEW
+*************/
+
+.svg-viewdata-view {   
+    display: block;
+    margin: 0 auto;
+    height: 100%;
+}
+
+.svg-viewdata-view-grid {
+    .gcol, .grow {
+        stroke: lightgrey;
+        stroke-dasharray: 1 4;
+    }
+
+    .gcol-10, .grow-10 {
+        stroke: darkgrey;
+        stroke-dasharray: none;
+    }
+}
+
+/**************
+Fluid Layout
+**************/
+
+.container-fluid {
+    #mainViewCard {
+        max-height: 90vh;
+        max-width: 90vh * 1.3;
+
+        .viewdata-view-wrapper {
+            padding: 0.25em 0.5em 0.25em 0.5em;
+
+            .svg-viewdata-view {
+                max-height: 80vh;
+            }
+        }
+    }
+
+    .commands {
+        .btn {
+            white-space: pre;
+        }
+    }
+
+    @media (min-width: 992px) {
+        .commands {
+            .btn {
+                font-size: min(1vw, 14px);
+                padding-left: min(0.75vw, 12px);
+                padding-right: min(0.75vw, 12px);
+            }
+        }
+
+        .text-responsive {
+            font-size: min(1vw, 14px);
+        }
+    }
+
+    @media all and (display-mode: fullscreen) {
+        #mainViewCard {
+            .viewdata-view-wrapper {            
+                .svg-viewdata-view {
+                    max-height: unset;
+                }
+            }
+        }
+    }
+}
+
+/*****************
+COMMAND BUTTONS
+*****************/
+
+.commands {
+    .btn, span {
+        &.unused,
+        &.set-at, 
+        &.set-after, 
+        &.row-default {
+            &:before {
+                font-family: "Font Awesome 5 Free";
+                content: "\f0c8";
+                font-weight: 900;
+                float: left;
+                display: block;
+                padding-right: 2px;
+            }
+        }
+
+        &.unused:before {
+            color: darkgray;
+        }
+
+        &.set-after:before {
+            color: darkorange;
+        }
+
+        &.set-at:before {
+            color: darkorchid;
+        }
+
+        &.set-after.row-default:before {
+            color: darkorange;
+            transform: rotate(-45deg);
+        }
+
+        &.set-at.row-default:before {
+            color: darkorchid;
+            transform: rotate(-45deg);
+        }
+    }
+
+    .btn:not(.btn-dark) {
+        filter: brightness(100%);
+
+        &.active {
+            filter: brightness(70%);
+        }
+    }
+
+    .btn-border {
+        border: 1px solid #222222;
+    }
+}
+
+/***********
+TABS & CARDS
+***********/
+
+.card.card-page {
+    min-height: 100vh;
+
+    .card-body {
+        padding-top: 2em;
+
+        h5 {
+            text-decoration: underline;
+        }
+    }
+
+    .tab-content {
+        padding-top: 1em;
+    }
+}
+
+@media (min-width: 1200px) {
+    .card.card-page {
+        width: 90%;
+        margin: 0 auto;
+    }
+}

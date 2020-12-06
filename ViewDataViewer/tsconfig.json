@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "noEmitOnError": true,
+    "removeComments": false,
+    "sourceMap": true,
+    "target": "ES5",
+    "skipLibCheck": true,
+    "alwaysStrict": true,
+    "diagnostics": true,
+    "module": "CommonJS",
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitReturns": true,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "strict": true,
+    "downlevelIteration": true,
+    "allowUmdGlobalAccess": true
+  }
+}

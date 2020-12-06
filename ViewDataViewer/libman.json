@@ -1,0 +1,38 @@
+{
+  "version": "1.0",
+  "defaultProvider": "cdnjs",
+  "libraries": [
+    {
+      "library": "lightslider@1.1.6",
+      "destination": "wwwroot/libs/lightslider"
+    },
+    {
+      "library": "lodash.js@4.17.20",
+      "destination": "wwwroot/libs/lodash"
+    },
+    {
+      "library": "knockout@3.5.1",
+      "destination": "wwwroot/libs/knockout"
+    },
+    {
+      "library": "jquery@3.5.1",
+      "destination": "wwwroot/libs/jquery"
+    },
+    {
+      "library": "twitter-bootstrap@4.5.3",
+      "destination": "wwwroot/libs/bootstrap"
+    },
+    {
+      "library": "bowser@1.9.4",
+      "destination": "wwwroot/libs/bowser"
+    },
+    {
+      "library": "hammer.js@2.0.8",
+      "destination": "wwwroot/libs/hammer"
+    },
+    {
+      "library": "require.js@2.3.6",
+      "destination": "wwwroot/libs/requirejs"
+    }
+  ]
+}

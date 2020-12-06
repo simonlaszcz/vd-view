@@ -1,0 +1,27 @@
+{
+  "name": "ViewDataViewer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "@microsoft/signalr": "^5.0.0",
+    "@types/hammerjs": "^2.0.36",
+    "@types/jquery": "^3.5.4",
+    "@types/knockout": "^3.4.69",
+    "@types/lodash": "^4.14.165",
+    "gulp": "^4.0.2",
+    "gulp-concat": "^2.6.1",
+    "gulp-cssmin": "^0.2.0",
+    "gulp-sass": "^4.1.0",
+    "gulp-uglify": "^3.0.2",
+    "merge-stream": "^2.0.0",
+    "node-sass": "^5.0.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

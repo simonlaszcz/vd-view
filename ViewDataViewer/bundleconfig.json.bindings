@@ -1,0 +1,2 @@
+///<binding AfterBuild='Scripts/app/bundles/framework_bundle.js, Content/bundles/framework_bundle.css' />
+produceoutput=false

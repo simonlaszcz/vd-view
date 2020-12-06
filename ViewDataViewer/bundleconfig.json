@@ -1,0 +1,26 @@
+﻿[
+  {
+    "outputFileName": "wwwroot/js/bundles/framework_bundle.js",
+    "inputFiles": [
+      "wwwroot/libs/jquery/jquery.min.js",
+      "wwwroot/libs/bootstrap/js/bootstrap.min.js",
+      "wwwroot/libs/knockout/knockout-latest.min.js",
+      "wwwroot/libs/lightslider/js/lightslider.min.js",
+      "wwwroot/libs/lodash/lodash.min.js",
+      "wwwroot/libs/bowser/bowser.min.js",
+      "wwwroot/libs/hammer/hammer.min.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/css/bundles/framework_bundle.css",
+    "minify": {
+      "enabled": true
+    },
+    "inputFiles": [
+      "wwwroot/libs/bootstrap/css/bootstrap.css",
+      "wwwroot/libs/lightslider/css/lightslider.css",
+      "wwwroot/css/Colours.css",
+      "wwwroot/css/Site.css"
+    ]
+  }
+]
