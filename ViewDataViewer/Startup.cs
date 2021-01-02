@@ -43,7 +43,7 @@ namespace ViewDataViewer
                 {
                     options.Cookie.HttpOnly = true;
                     options.Cookie.IsEssential = true;
-                    options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
+                    options.Cookie.SecurePolicy = CookieSecurePolicy.SameAsRequest;
                     options.Cookie.SameSite = SameSiteMode.Strict;
                     options.Cookie.Name = "ASPXAUTH";
                 });
@@ -52,7 +52,7 @@ namespace ViewDataViewer
             {
                 options.MinimumSameSitePolicy = SameSiteMode.Strict;
                 options.HttpOnly = HttpOnlyPolicy.Always;
-                options.Secure = CookieSecurePolicy.Always;
+                options.Secure = CookieSecurePolicy.SameAsRequest;
                 options.ConsentCookie.IsEssential = true;
                 options.CheckConsentNeeded = context => false;
             });
