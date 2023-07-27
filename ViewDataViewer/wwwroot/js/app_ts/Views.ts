@@ -108,7 +108,7 @@ export class Main {
                 try {
                     this.Downloader.Decode(b64);
                 }
-                catch (ex) {
+                catch (ex: any) {
                     this.Log.Error(ex);
                     this.Status.unexpected();
                 }

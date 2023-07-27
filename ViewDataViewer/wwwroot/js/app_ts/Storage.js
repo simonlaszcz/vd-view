@@ -5,7 +5,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     function verb(n) { return function (v) { return step([n, v]); }; }
     function step(op) {
         if (f) throw new TypeError("Generator is already executing.");
-        while (_) try {
+        while (g && (g = 0, op[0] && (_ = 0)), _) try {
             if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
             if (y = 0, t) op = [op[0] & 2, t.value];
             switch (op[0]) {
@@ -42,9 +42,14 @@ var __read = (this && this.__read) || function (o, n) {
     }
     return ar;
 };
-var __spread = (this && this.__spread) || function () {
-    for (var ar = [], i = 0; i < arguments.length; i++) ar = ar.concat(__read(arguments[i]));
-    return ar;
+var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
+    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
+        if (ar || !(i in from)) {
+            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
+            ar[i] = from[i];
+        }
+    }
+    return to.concat(ar || Array.prototype.slice.call(from));
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Storage = exports.Download = exports.Frame = void 0;
@@ -54,7 +59,7 @@ var Frame = /** @class */ (function () {
     function Frame(data) {
         this.b64 = data.b64;
         this.thumbnail = data.thumbnail;
-        this.uri = "data:" + data.thumbnail.mime + ";base64," + data.thumbnail.b64;
+        this.uri = "data:".concat(data.thumbnail.mime, ";base64,").concat(data.thumbnail.b64);
     }
     return Frame;
 }());
@@ -65,7 +70,7 @@ var Download = /** @class */ (function () {
         this.size = data.size;
         this.b64 = data.b64;
         this.mime = data.mime;
-        this.uri = "data:" + data.mime + ";base64," + data.b64;
+        this.uri = "data:".concat(data.mime, ";base64,").concat(data.b64);
     }
     return Download;
 }());
@@ -79,8 +84,8 @@ var Storage = /** @class */ (function () {
         this.frameKeyPrefix = /^SF_([0-9]+)$/;
         this.downloadKeyPrefix = /^DL_(.+)$/;
         this.storage = window.localStorage;
-        this.frameKeys = __spread(this.getKeys(this.frameKeyPrefix));
-        this.downloadKeys = __spread(this.getKeys(this.downloadKeyPrefix));
+        this.frameKeys = __spreadArray([], __read(this.getKeys(this.frameKeyPrefix)), false);
+        this.downloadKeys = __spreadArray([], __read(this.getKeys(this.downloadKeyPrefix)), false);
         this.frameKeys.sort();
         this.downloadKeys.sort();
     }
@@ -138,7 +143,7 @@ var Storage = /** @class */ (function () {
     };
     ;
     Storage.prototype.AddFrame = function (b64, thumbnail) {
-        var key = "SF_" + this.getSeqNo();
+        var key = "SF_".concat(this.getSeqNo());
         var data = { b64: b64, thumbnail: thumbnail };
         this.storage.setItem(key, JSON.stringify(data));
         this.frameKeys.push(key);
@@ -162,7 +167,7 @@ var Storage = /** @class */ (function () {
     };
     Storage.prototype.AddDownload = function (filename, size, b64, mime) {
         if (mime === void 0) { mime = this.MimeTypes.Binary; }
-        var key = "DL_" + filename + "_" + this.getSeqNo();
+        var key = "DL_".concat(filename, "_").concat(this.getSeqNo());
         var data = { filename: filename, size: size, b64: b64, mime: mime };
         this.storage.setItem(key, JSON.stringify(data));
         this.downloadKeys.push(key);

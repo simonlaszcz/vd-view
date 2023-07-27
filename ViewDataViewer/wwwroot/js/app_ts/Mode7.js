@@ -15,9 +15,14 @@ var __read = (this && this.__read) || function (o, n) {
     }
     return ar;
 };
-var __spread = (this && this.__spread) || function () {
-    for (var ar = [], i = 0; i < arguments.length; i++) ar = ar.concat(__read(arguments[i]));
-    return ar;
+var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
+    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
+        if (ar || !(i in from)) {
+            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
+            ar[i] = from[i];
+        }
+    }
+    return to.concat(ar || Array.prototype.slice.call(from));
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.IsMosaic = exports.FromKeyboardString = exports.FromKeyboard = exports.ToDisplay = exports.Space = void 0;
@@ -230,7 +235,7 @@ function getNativeCharCode(rowCode, colCode) {
  * Create a Teletext coded string from keyboard input. Do not alter control codes < 32
  */
 function FromKeyboardString(text) {
-    var chars = __spread((String(text || ''))).map(function (char) {
+    var chars = __spreadArray([], __read((String(text || ''))), false).map(function (char) {
         var code = char.charCodeAt(0);
         if (code < 32) {
             return char;

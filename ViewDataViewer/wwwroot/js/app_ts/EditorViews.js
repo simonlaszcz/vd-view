@@ -49,7 +49,7 @@ var ViewDataView = /** @class */ (function () {
         this.Flags = this.Decoder.Flags;
         this.ExoticCharacters = new ExoticCharacters(this.Flags.IsContiguous, this.Flags.IsAlpha, this.Flags.IsGraphics);
         this.BgCss = ko.computed(function () {
-            return "bg-" + Terminal.Colours[_this.Flags.BgColour()];
+            return "bg-".concat(Terminal.Colours[_this.Flags.BgColour()]);
         });
     }
     return ViewDataView;
@@ -190,7 +190,7 @@ var Main = /** @class */ (function () {
             _this.IsViewFocused(true);
             var canvas = document.getElementById('Canvas');
             var data = Terminal.SaveAsImage(_this.View.Buffer, canvas);
-            var filename = "" + _this.View.Decoder.FrameNumber() + data.extension;
+            var filename = "".concat(_this.View.Decoder.FrameNumber()).concat(data.extension);
             var image = _this.Storage.AddDownload(filename, data.size, data.b64, data.mime);
             _this.Downloads.push(image);
             _this.scrollToDownloads();

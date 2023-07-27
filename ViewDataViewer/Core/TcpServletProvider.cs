@@ -26,7 +26,7 @@ namespace ViewDataViewer.Core
             //    new Endpoint("nx.nxtel.org", 23281, 200)
             //}},
             { "TeeFax", new List<Endpoint> { 
-                new Endpoint("pegasus.matrixnetwork.co.uk", 6502, 1200) { HardPostamble = Encoding.UTF8.GetBytes("FFF"), SoftPostamble = Encoding.UTF8.GetBytes("FFF"), Mode = EndpointMode.Teletext } 
+                new Endpoint("teletext.matrixnetwork.co.uk", 6502, 1200) { HardPostamble = Encoding.UTF8.GetBytes("FFF"), SoftPostamble = Encoding.UTF8.GetBytes("FFF"), Mode = EndpointMode.Teletext } 
             }},
             { "Telstar (fast)", new List<Endpoint> { 
                 new Endpoint("glasstty.com", 6502, 1000) {Preamble = new byte[] {255, 253, 3}, HardPostamble = ViewdataHardLogoff, SoftPostamble = ViewdataSoftLogoff }, 

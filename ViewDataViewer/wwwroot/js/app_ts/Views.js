@@ -14,7 +14,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     function verb(n) { return function (v) { return step([n, v]); }; }
     function step(op) {
         if (f) throw new TypeError("Generator is already executing.");
-        while (_) try {
+        while (g && (g = 0, op[0] && (_ = 0)), _) try {
             if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
             if (y = 0, t) op = [op[0] & 2, t.value];
             switch (op[0]) {
@@ -123,7 +123,7 @@ var Main = /** @class */ (function () {
             _this.EnableDownload(false);
             var b64 = _this.Downloader.GetBase64();
             _this.Downloads.push(_this.Storage.AddDownload(filename, size, b64, _this.Storage.MimeTypes.Binary));
-            _this.Log.Info("'" + filename + "' downloaded");
+            _this.Log.Info("'".concat(filename, "' downloaded"));
             _this.send('#');
             _this.scrollToDownloads();
         });
@@ -159,7 +159,7 @@ var Main = /** @class */ (function () {
                     _this.UserStats('1 user online');
                 }
                 else {
-                    _this.UserStats(stats.active + " users online");
+                    _this.UserStats("".concat(stats.active, " users online"));
                 }
             },
             exception: function (message) {
@@ -312,7 +312,7 @@ var Main = /** @class */ (function () {
             _this.IsViewFocused(true);
             var canvas = document.getElementById('Canvas');
             var data = Terminal.SaveAsImage(_this.View.Buffer, canvas);
-            var filename = "" + _this.View.Decoder.FrameNumber() + data.extension;
+            var filename = "".concat(_this.View.Decoder.FrameNumber()).concat(data.extension);
             var image = _this.Storage.AddDownload(filename, data.size, data.b64, data.mime);
             _this.Downloads.push(image);
             _this.scrollToDownloads();
@@ -406,7 +406,7 @@ var Main = /** @class */ (function () {
     Main.prototype.send = function (text) {
         var _this = this;
         var raw = Mode7.FromKeyboardString(text);
-        this.Log.Info("Sending '" + text + "' encoded as '" + raw + "'");
+        this.Log.Info("Sending '".concat(text, "' encoded as '").concat(raw, "'"));
         var b64 = btoa(raw);
         this.Hub.Server.asyncWrite(b64)
             .catch(function () {
@@ -420,11 +420,11 @@ var Main = /** @class */ (function () {
     Main.prototype.connect = function () {
         var _this = this;
         var service = this.SelectedService();
-        this.Log.Info("Connecting to " + service);
+        this.Log.Info("Connecting to ".concat(service));
         return this.checkConnection(true).catch(function () {
             return _this.Hub.Server.open(service)
                 .then(function (result) {
-                _this.Log.Success("Connected to " + result.host + " on port " + result.port);
+                _this.Log.Success("Connected to ".concat(result.host, " on port ").concat(result.port));
                 _this.onConnected(result);
             })
                 .catch(function (error) {
@@ -486,7 +486,7 @@ var Main = /** @class */ (function () {
         });
     };
     Main.prototype.onConnected = function (result) {
-        this.Header(result.host + ":" + result.port);
+        this.Header("".concat(result.host, ":").concat(result.port));
         this.IsConnected(true);
         this.Postamble(result.postamble);
         this.IsViewdata(result.mode == 'Viewdata');

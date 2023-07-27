@@ -10,7 +10,7 @@
         args.forEach(x => console.log(`vd-view: info:  ${x}`));
     }
 
-    Error(...args: Array<string>) {
+    Error(...args: Array<any>) {
         args.forEach(x => console.log(`vd-view: error: ${x}`));
     }
 

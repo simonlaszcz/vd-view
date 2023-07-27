@@ -15,9 +15,14 @@ var __read = (this && this.__read) || function (o, n) {
     }
     return ar;
 };
-var __spread = (this && this.__spread) || function () {
-    for (var ar = [], i = 0; i < arguments.length; i++) ar = ar.concat(__read(arguments[i]));
-    return ar;
+var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
+    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
+        if (ar || !(i in from)) {
+            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
+            ar[i] = from[i];
+        }
+    }
+    return to.concat(ar || Array.prototype.slice.call(from));
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.SAA5050 = void 0;
@@ -263,7 +268,7 @@ var SAA5050 = /** @class */ (function () {
         this.DecodeBase64(b64);
     };
     SAA5050.prototype.GetFrameAsBase64 = function () {
-        return btoa(String.fromCharCode.apply(String, __spread(this.frameBuffer.slice(0, this.frameBufferOffset))));
+        return btoa(String.fromCharCode.apply(String, __spreadArray([], __read(this.frameBuffer.slice(0, this.frameBufferOffset)), false)));
     };
     SAA5050.prototype.FrameNumber = function () {
         var text = this.headerRow.join('');

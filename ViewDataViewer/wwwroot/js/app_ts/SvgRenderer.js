@@ -15,9 +15,14 @@ var __read = (this && this.__read) || function (o, n) {
     }
     return ar;
 };
-var __spread = (this && this.__spread) || function () {
-    for (var ar = [], i = 0; i < arguments.length; i++) ar = ar.concat(__read(arguments[i]));
-    return ar;
+var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
+    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
+        if (ar || !(i in from)) {
+            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
+            ar[i] = from[i];
+        }
+    }
+    return to.concat(ar || Array.prototype.slice.call(from));
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.SvgBufferCell = exports.SvgBufferRow = exports.SvgBufferTransform = void 0;
@@ -40,11 +45,11 @@ var SvgBufferTransform = /** @class */ (function () {
     function SvgBufferTransform(buffer, ShowGrid) {
         this.buffer = buffer;
         this.ShowGrid = ShowGrid;
-        this.Rows = __spread(buffer.Rows, [buffer.StatusRow]).map(function (row, rowIdx, array) { return new SvgBufferRow(array, rowIdx); });
+        this.Rows = __spreadArray(__spreadArray([], __read(buffer.Rows), false), [buffer.StatusRow], false).map(function (row, rowIdx, array) { return new SvgBufferRow(array, rowIdx); });
         this.ViewBox = ko.computed(function () {
             var width = Terminal.Constants.MaxCols * Constants.CellWidth;
             var height = (Terminal.Constants.MaxRows + 1) * Constants.CellHeight;
-            return "0 0 " + width + " " + height;
+            return "0 0 ".concat(width, " ").concat(height);
         });
         this.Grid = this.getGridLines();
     }
@@ -60,7 +65,7 @@ var SvgBufferTransform = /** @class */ (function () {
                 Y1: 0,
                 X2: x,
                 Y2: height - 1,
-                Css: "gcol " + (is10th ? 'gcol-10' : '')
+                Css: "gcol ".concat(is10th ? 'gcol-10' : '')
             });
         }
         for (var rowIdx = 0; rowIdx <= Terminal.Constants.MaxRows; ++rowIdx) {
@@ -71,7 +76,7 @@ var SvgBufferTransform = /** @class */ (function () {
                 Y1: y,
                 X2: width - 1,
                 Y2: y,
-                Css: "grow " + (is10th ? 'grow-10' : '')
+                Css: "grow ".concat(is10th ? 'grow-10' : '')
             });
         }
         return grid;
@@ -114,7 +119,7 @@ var SvgBufferCell = /** @class */ (function () {
             return _this.bufferCell.IsDoubleHeight() ? Constants.DoubleFontDescender : Constants.FontDescender;
         });
         this.FontSize = ko.computed(function () {
-            return "" + (_this.bufferCell.IsDoubleHeight() ? Constants.CellDoubleHeight : Constants.CellHeight);
+            return "".concat(_this.bufferCell.IsDoubleHeight() ? Constants.CellDoubleHeight : Constants.CellHeight);
         });
         this.Width = ko.observable(Constants.CellWidth);
         this.CellHeight = ko.computed(function () {
@@ -137,18 +142,18 @@ var SvgBufferCell = /** @class */ (function () {
         this.CellCss = ko.computed(function () {
             //  Sometimes we get an ascii character with mosaic flags. We don't want to alter the css of these chars to make them contiguous
             var isMosaic = _this.bufferCell.IsContiguousMosaic() && Mode7.IsMosaic(_this.Character());
-            return "svg-viewdata-view-cell " + (_this.bufferCell.IsFlashing() ? 'blink' : '') + " " + (_this.bufferCell.IsDoubleHeight() ? 'double-height' : '') + " " + (_this.bufferCell.IsConcealed() ? 'concealed' : '') + " " + (isMosaic ? 'mosaic' : '');
+            return "svg-viewdata-view-cell ".concat(_this.bufferCell.IsFlashing() ? 'blink' : '', " ").concat(_this.bufferCell.IsDoubleHeight() ? 'double-height' : '', " ").concat(_this.bufferCell.IsConcealed() ? 'concealed' : '', " ").concat(isMosaic ? 'mosaic' : '');
         });
         this.BgCss = ko.computed(function () {
             var bg = _this.bufferCell.IsCursor() ? Terminal.Colours[Terminal.Colours.white] : Terminal.Colours[_this.bufferCell.Bg()];
-            return "bg-" + bg;
+            return "bg-".concat(bg);
         });
         this.FgCss = ko.computed(function () {
             var fg = _this.bufferCell.IsCursor() ? Terminal.Colours[Terminal.Colours.black] : Terminal.Colours[_this.bufferCell.Fg];
-            return "fg-" + fg;
+            return "fg-".concat(fg);
         });
         this.Id = ko.computed(function () {
-            return "row-" + _this.row.RowIdx + "-col-" + _this.colIdx;
+            return "row-".concat(_this.row.RowIdx, "-col-").concat(_this.colIdx);
         });
         this.Fixes = ko.computed(function () {
             var fixes = new Array();

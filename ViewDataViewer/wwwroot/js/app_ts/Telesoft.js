@@ -74,7 +74,7 @@ var Downloads = /** @class */ (function () {
         for (var bufferIdx = 0; bufferIdx < buffer.length; ++bufferIdx) {
             var b = buffer[bufferIdx];
             if (checkParity && this.inFrame && this.parity(b) !== (b >> 7)) {
-                this.onError("parity error in frame " + this.frameNumber);
+                this.onError("parity error in frame ".concat(this.frameNumber));
             }
             //  Discard parity bit
             b &= 127;
@@ -211,7 +211,7 @@ var Downloads = /** @class */ (function () {
                             case 4:
                                 this.checksum += b - 48;
                                 if (this.checksum !== this.runningChecksum) {
-                                    this.onError("invalid frame checksum at frame " + this.frameNumber + " (expected " + this.checksum + ", got " + this.runningChecksum + ")");
+                                    this.onError("invalid frame checksum at frame ".concat(this.frameNumber, " (expected ").concat(this.checksum, ", got ").concat(this.runningChecksum, ")"));
                                 }
                                 this.state = 0;
                                 if (invokeCallbacks && this.onEndOfFrame) {

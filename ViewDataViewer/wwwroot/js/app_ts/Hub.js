@@ -41,7 +41,7 @@ var Hub = /** @class */ (function () {
                     resolve();
                 })
                     .catch(function (error) {
-                    _this.log.Success("SignalR: " + error);
+                    _this.log.Success("SignalR: ".concat(error));
                     reject(error);
                 });
             }

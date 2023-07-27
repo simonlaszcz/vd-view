@@ -16,14 +16,14 @@ var Colours;
     Colours[Colours["magenta"] = 5] = "magenta";
     Colours[Colours["cyan"] = 6] = "cyan";
     Colours[Colours["white"] = 7] = "white";
-})(Colours = exports.Colours || (exports.Colours = {}));
+})(Colours || (exports.Colours = Colours = {}));
 var ControlKeys;
 (function (ControlKeys) {
     ControlKeys["Reveal"] = "REVEAL";
     ControlKeys["Advance"] = "ADVANCE";
     ControlKeys["Hold"] = "HOLD";
     ControlKeys["Download"] = "DOWNLOAD";
-})(ControlKeys = exports.ControlKeys || (exports.ControlKeys = {}));
+})(ControlKeys || (exports.ControlKeys = ControlKeys = {}));
 var Constants = /** @class */ (function () {
     function Constants() {
     }
@@ -142,7 +142,7 @@ var Cell = /** @class */ (function () {
         this.Css = ko.computed(function () {
             var bg = Colours[_this.Bg()];
             var fg = Colours[_this._fg()];
-            return "bg-" + bg + " fg-" + fg + " " + (_this.IsFlashing() ? 'blink' : '') + " " + (_this.IsDoubleHeight() ? 'double-height' : '') + " " + (_this.IsConcealed() ? 'concealed' : '') + " " + (_this.IsCursor() ? 'cursor' : '') + " " + (_this.IsContiguousMosaic() ? 'mosaic' : '');
+            return "bg-".concat(bg, " fg-").concat(fg, " ").concat(_this.IsFlashing() ? 'blink' : '', " ").concat(_this.IsDoubleHeight() ? 'double-height' : '', " ").concat(_this.IsConcealed() ? 'concealed' : '', " ").concat(_this.IsCursor() ? 'cursor' : '', " ").concat(_this.IsContiguousMosaic() ? 'mosaic' : '');
         });
         Clock.Enlist(function (show) {
             if (!_this.IsFlashing()) {
@@ -315,11 +315,11 @@ function SaveAsImage(buffer, canvas, imgSzX, imgSzY) {
         var isDoubleHeight = buffer.Row(row).Cells.some(function (x) { return x.IsDoubleHeight(); });
         if (isDoubleHeight) {
             textY += szY2;
-            ctx.font = szY2 + "px bedstead-double-height";
+            ctx.font = "".concat(szY2, "px bedstead-double-height");
         }
         else {
             textY += szY;
-            ctx.font = szY + "px bedstead";
+            ctx.font = "".concat(szY, "px bedstead");
         }
         for (var col = 0; col < Constants.MaxCols; ++col) {
             var cell = buffer.Cell(row, col);
