@@ -147,7 +147,7 @@ export class SAA5050 {
                         this.flags.HeldMosaic(Mode7.Space);
                         break;
                     case 13:    //  double height (but not on last row)
-                        if (this.bufferRowIdx < (Terminal.Constants.MaxRows - 2)) {
+                        if (this.bufferRowIdx < (Terminal.Constants.MaxRows - 2) && this.bufferRowIdx != this.doubleHeightLowerRowIdx) {
                             this.afterFlags.isDoubleHeight = true;
                         }
                         break;
