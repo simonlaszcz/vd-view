@@ -19,6 +19,9 @@ namespace ViewDataViewer.Core
         private static readonly byte[] ViewdataSoftLogoff = Encoding.UTF8.GetBytes("*90_");
         private static readonly Dictionary<string, List<Endpoint>> Endpoints = new Dictionary<string, List<Endpoint>>
         {
+            { "Night Owl (evenings)", new List<Endpoint> {
+                new Endpoint("nightowlbbs.ddns.net", 6400, 2000) { HardPostamble = ViewdataHardLogoff, SoftPostamble = ViewdataSoftLogoff }
+            }},
             { "NXTel", new List<Endpoint> { 
                 new Endpoint("nx.nxtel.org", 23280, 200)
             }},
