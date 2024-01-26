@@ -7,3 +7,4 @@ ServiceDependencies/
 bin/
 obj/
 libs/
+.config/
