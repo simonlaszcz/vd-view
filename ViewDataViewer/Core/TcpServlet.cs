@@ -324,7 +324,7 @@ namespace ViewDataViewer.Core
             try
             {                
                 AsyncReadData data = (AsyncReadData)result.AsyncState;
-                int read = this.stream.EndRead(result);
+                int read = this.stream?.EndRead(result) ?? 0;
                 this.log.Trace($"asyncRead: [{this.UserId}] read {read} bytes after {(DateTime.UtcNow - data.Timestamp).TotalMilliseconds:0.00}ms");
 
                 if (read > 0)
@@ -336,7 +336,7 @@ namespace ViewDataViewer.Core
                 }
 
                 data.Timestamp = DateTime.UtcNow;
-                this.stream.BeginRead(data.Buffer, 0, this.client.ReceiveBufferSize, AsyncReadHandler, data);
+                this.stream?.BeginRead(data.Buffer, 0, this.client.ReceiveBufferSize, AsyncReadHandler, data);
             }
             catch (Exception ex)
             {

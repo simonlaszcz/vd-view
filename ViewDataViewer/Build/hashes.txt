@@ -1,6 +1,8 @@
 require.min.js	1fEPhSsRKlFKGfK3eO710tEweHh1fwokU5wFGDHO+vg=
-main.bundle.js	1oDoV/W6cAXgzSGzVlltjPZQ7xyuoEeZ/rOKc5t6zPg=
 require.js	lIXwkX+X/PT2Ol6jZSAP/VfxI/RROCovmhrS4v1RrJs=
-editormain.bundle.js	OaA+og7xrxslfqkJIDZdsvIKkIzglO5mYZx96JWfqWA=
-framework_bundle.css	sw697ABvp6LNBAFB5DbL3eXRQBlKz0uIPITYSqTSiYg=
-framework_bundle.js	xvHloiRJhNgmr5vqG/l7hxBKFJG5V2VgEkIQGKAmtEI=
+editormain.bundle.js	YlRe5ndACAvIEPjfdr4O/0bkhv3nsqOhCz1NQ/2FzhU=
+main.bundle.es5.js	NW+kczoeUBY4chRHBQSE0uFeBUwkoQmkw8zruoEoCkc=
+main.bundle.es5.min.js	WSlV/0CieYRBvuxAPycqEJIFMVRkpzesOm0hwt9uNlk=
+framework_bundle.css	up1KqLBUPwte7IFlIvEHM1pNNtQGqiIlia9nyH60Wik=
+main.bundle.js	HEPTYDdfZeo/nGEZjPo7y8O2N6eJUtleilb8bNuTV/c=
+framework_bundle.js	Mve2IPa7cFRFa4J6m5V2uXbgLpB2gpzChV6wNU1jsWo=

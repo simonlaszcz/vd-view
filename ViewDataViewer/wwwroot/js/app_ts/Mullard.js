@@ -105,7 +105,12 @@ var SAA5050 = /** @class */ (function () {
                     }
                     continue;
                 case 10: //  LF (end of row)
-                    this.nextRow();
+                    ++this.bufferRowIdx;
+                    if (this.bufferRowIdx >= Terminal.Constants.MaxRows) {
+                        this.bufferRowIdx = 0;
+                    }
+                    this.flags.Reset();
+                    this.afterFlags.Reset();
                     continue;
                 case 11: //  v-tab
                     --this.bufferRowIdx;

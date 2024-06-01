@@ -2,249 +2,297 @@
  * vd-view colours
  */
 .fg-white {
-  color: white; }
+  color: white;
+}
 
 .svg-viewdata-view-cell .fg-white {
-  fill: white; }
-
+  fill: white;
+}
 .svg-viewdata-view-cell.mosaic .fg-white {
-  stroke: white; }
-
+  stroke: white;
+}
 .svg-viewdata-view-cell.concealed .fg-white {
   fill: transparent;
-  stroke: transparent; }
-
+  stroke: transparent;
+}
 .svg-viewdata-view-cell.concealed .svg-viewdata-view-cell.mosaic .fg-white {
-  stroke: transparent; }
+  stroke: transparent;
+}
 
 .revealed .svg-viewdata-view-cell.concealed .fg-white {
-  fill: white; }
-
+  fill: white;
+}
 .revealed .svg-viewdata-view-cell.concealed .revealed .svg-viewdata-view-cell.mosaic .fg-white {
-  stroke: white; }
+  stroke: white;
+}
 
 .bg-white {
-  background-color: white; }
-  .bg-white.text-auto {
-    color: #343a40; }
+  background-color: white;
+}
+.bg-white.text-auto {
+  color: rgb(52, 58, 64);
+}
 
 .svg-viewdata-view-cell .bg-white {
   fill: white;
-  stroke: white; }
+  stroke: white;
+}
 
 .fg-black {
-  color: black; }
+  color: black;
+}
 
 .svg-viewdata-view-cell .fg-black {
-  fill: black; }
-
+  fill: black;
+}
 .svg-viewdata-view-cell.mosaic .fg-black {
-  stroke: black; }
-
+  stroke: black;
+}
 .svg-viewdata-view-cell.concealed .fg-black {
   fill: transparent;
-  stroke: transparent; }
-
+  stroke: transparent;
+}
 .svg-viewdata-view-cell.concealed .svg-viewdata-view-cell.mosaic .fg-black {
-  stroke: transparent; }
+  stroke: transparent;
+}
 
 .revealed .svg-viewdata-view-cell.concealed .fg-black {
-  fill: black; }
-
+  fill: black;
+}
 .revealed .svg-viewdata-view-cell.concealed .revealed .svg-viewdata-view-cell.mosaic .fg-black {
-  stroke: black; }
+  stroke: black;
+}
 
 .bg-black {
-  background-color: black; }
-  .bg-black.text-auto {
-    color: white; }
+  background-color: black;
+}
+.bg-black.text-auto {
+  color: white;
+}
 
 .svg-viewdata-view-cell .bg-black {
   fill: black;
-  stroke: black; }
+  stroke: black;
+}
 
 .fg-red {
-  color: red; }
+  color: rgb(255, 0, 0);
+}
 
 .svg-viewdata-view-cell .fg-red {
-  fill: red; }
-
+  fill: rgb(255, 0, 0);
+}
 .svg-viewdata-view-cell.mosaic .fg-red {
-  stroke: red; }
-
+  stroke: rgb(255, 0, 0);
+}
 .svg-viewdata-view-cell.concealed .fg-red {
   fill: transparent;
-  stroke: transparent; }
-
+  stroke: transparent;
+}
 .svg-viewdata-view-cell.concealed .svg-viewdata-view-cell.mosaic .fg-red {
-  stroke: transparent; }
+  stroke: transparent;
+}
 
 .revealed .svg-viewdata-view-cell.concealed .fg-red {
-  fill: red; }
-
+  fill: rgb(255, 0, 0);
+}
 .revealed .svg-viewdata-view-cell.concealed .revealed .svg-viewdata-view-cell.mosaic .fg-red {
-  stroke: red; }
+  stroke: rgb(255, 0, 0);
+}
 
 .bg-red {
-  background-color: red; }
-  .bg-red.text-auto {
-    color: white; }
+  background-color: rgb(255, 0, 0);
+}
+.bg-red.text-auto {
+  color: white;
+}
 
 .svg-viewdata-view-cell .bg-red {
-  fill: red;
-  stroke: red; }
+  fill: rgb(255, 0, 0);
+  stroke: rgb(255, 0, 0);
+}
 
 .fg-green {
-  color: lime; }
+  color: rgb(0, 255, 0);
+}
 
 .svg-viewdata-view-cell .fg-green {
-  fill: lime; }
-
+  fill: rgb(0, 255, 0);
+}
 .svg-viewdata-view-cell.mosaic .fg-green {
-  stroke: lime; }
-
+  stroke: rgb(0, 255, 0);
+}
 .svg-viewdata-view-cell.concealed .fg-green {
   fill: transparent;
-  stroke: transparent; }
-
+  stroke: transparent;
+}
 .svg-viewdata-view-cell.concealed .svg-viewdata-view-cell.mosaic .fg-green {
-  stroke: transparent; }
+  stroke: transparent;
+}
 
 .revealed .svg-viewdata-view-cell.concealed .fg-green {
-  fill: lime; }
-
+  fill: rgb(0, 255, 0);
+}
 .revealed .svg-viewdata-view-cell.concealed .revealed .svg-viewdata-view-cell.mosaic .fg-green {
-  stroke: lime; }
+  stroke: rgb(0, 255, 0);
+}
 
 .bg-green {
-  background-color: lime; }
-  .bg-green.text-auto {
-    color: white; }
+  background-color: rgb(0, 255, 0);
+}
+.bg-green.text-auto {
+  color: white;
+}
 
 .svg-viewdata-view-cell .bg-green {
-  fill: lime;
-  stroke: lime; }
+  fill: rgb(0, 255, 0);
+  stroke: rgb(0, 255, 0);
+}
 
 .fg-yellow {
-  color: yellow; }
+  color: rgb(255, 255, 0);
+}
 
 .svg-viewdata-view-cell .fg-yellow {
-  fill: yellow; }
-
+  fill: rgb(255, 255, 0);
+}
 .svg-viewdata-view-cell.mosaic .fg-yellow {
-  stroke: yellow; }
-
+  stroke: rgb(255, 255, 0);
+}
 .svg-viewdata-view-cell.concealed .fg-yellow {
   fill: transparent;
-  stroke: transparent; }
-
+  stroke: transparent;
+}
 .svg-viewdata-view-cell.concealed .svg-viewdata-view-cell.mosaic .fg-yellow {
-  stroke: transparent; }
+  stroke: transparent;
+}
 
 .revealed .svg-viewdata-view-cell.concealed .fg-yellow {
-  fill: yellow; }
-
+  fill: rgb(255, 255, 0);
+}
 .revealed .svg-viewdata-view-cell.concealed .revealed .svg-viewdata-view-cell.mosaic .fg-yellow {
-  stroke: yellow; }
+  stroke: rgb(255, 255, 0);
+}
 
 .bg-yellow {
-  background-color: yellow; }
-  .bg-yellow.text-auto {
-    color: #343a40; }
+  background-color: rgb(255, 255, 0);
+}
+.bg-yellow.text-auto {
+  color: rgb(52, 58, 64);
+}
 
 .svg-viewdata-view-cell .bg-yellow {
-  fill: yellow;
-  stroke: yellow; }
+  fill: rgb(255, 255, 0);
+  stroke: rgb(255, 255, 0);
+}
 
 .fg-blue {
-  color: blue; }
+  color: rgb(0, 0, 255);
+}
 
 .svg-viewdata-view-cell .fg-blue {
-  fill: blue; }
-
+  fill: rgb(0, 0, 255);
+}
 .svg-viewdata-view-cell.mosaic .fg-blue {
-  stroke: blue; }
-
+  stroke: rgb(0, 0, 255);
+}
 .svg-viewdata-view-cell.concealed .fg-blue {
   fill: transparent;
-  stroke: transparent; }
-
+  stroke: transparent;
+}
 .svg-viewdata-view-cell.concealed .svg-viewdata-view-cell.mosaic .fg-blue {
-  stroke: transparent; }
+  stroke: transparent;
+}
 
 .revealed .svg-viewdata-view-cell.concealed .fg-blue {
-  fill: blue; }
-
+  fill: rgb(0, 0, 255);
+}
 .revealed .svg-viewdata-view-cell.concealed .revealed .svg-viewdata-view-cell.mosaic .fg-blue {
-  stroke: blue; }
+  stroke: rgb(0, 0, 255);
+}
 
 .bg-blue {
-  background-color: blue; }
-  .bg-blue.text-auto {
-    color: white; }
+  background-color: rgb(0, 0, 255);
+}
+.bg-blue.text-auto {
+  color: white;
+}
 
 .svg-viewdata-view-cell .bg-blue {
-  fill: blue;
-  stroke: blue; }
+  fill: rgb(0, 0, 255);
+  stroke: rgb(0, 0, 255);
+}
 
 .fg-magenta {
-  color: magenta; }
+  color: rgb(255, 0, 255);
+}
 
 .svg-viewdata-view-cell .fg-magenta {
-  fill: magenta; }
-
+  fill: rgb(255, 0, 255);
+}
 .svg-viewdata-view-cell.mosaic .fg-magenta {
-  stroke: magenta; }
-
+  stroke: rgb(255, 0, 255);
+}
 .svg-viewdata-view-cell.concealed .fg-magenta {
   fill: transparent;
-  stroke: transparent; }
-
+  stroke: transparent;
+}
 .svg-viewdata-view-cell.concealed .svg-viewdata-view-cell.mosaic .fg-magenta {
-  stroke: transparent; }
+  stroke: transparent;
+}
 
 .revealed .svg-viewdata-view-cell.concealed .fg-magenta {
-  fill: magenta; }
-
+  fill: rgb(255, 0, 255);
+}
 .revealed .svg-viewdata-view-cell.concealed .revealed .svg-viewdata-view-cell.mosaic .fg-magenta {
-  stroke: magenta; }
+  stroke: rgb(255, 0, 255);
+}
 
 .bg-magenta {
-  background-color: magenta; }
-  .bg-magenta.text-auto {
-    color: white; }
+  background-color: rgb(255, 0, 255);
+}
+.bg-magenta.text-auto {
+  color: white;
+}
 
 .svg-viewdata-view-cell .bg-magenta {
-  fill: magenta;
-  stroke: magenta; }
+  fill: rgb(255, 0, 255);
+  stroke: rgb(255, 0, 255);
+}
 
 .fg-cyan {
-  color: cyan; }
+  color: rgb(0, 255, 255);
+}
 
 .svg-viewdata-view-cell .fg-cyan {
-  fill: cyan; }
-
+  fill: rgb(0, 255, 255);
+}
 .svg-viewdata-view-cell.mosaic .fg-cyan {
-  stroke: cyan; }
-
+  stroke: rgb(0, 255, 255);
+}
 .svg-viewdata-view-cell.concealed .fg-cyan {
   fill: transparent;
-  stroke: transparent; }
-
+  stroke: transparent;
+}
 .svg-viewdata-view-cell.concealed .svg-viewdata-view-cell.mosaic .fg-cyan {
-  stroke: transparent; }
+  stroke: transparent;
+}
 
 .revealed .svg-viewdata-view-cell.concealed .fg-cyan {
-  fill: cyan; }
-
+  fill: rgb(0, 255, 255);
+}
 .revealed .svg-viewdata-view-cell.concealed .revealed .svg-viewdata-view-cell.mosaic .fg-cyan {
-  stroke: cyan; }
+  stroke: rgb(0, 255, 255);
+}
 
 .bg-cyan {
-  background-color: cyan; }
-  .bg-cyan.text-auto {
-    color: #343a40; }
+  background-color: rgb(0, 255, 255);
+}
+.bg-cyan.text-auto {
+  color: rgb(52, 58, 64);
+}
 
 .svg-viewdata-view-cell .bg-cyan {
-  fill: cyan;
-  stroke: cyan; }
+  fill: rgb(0, 255, 255);
+  stroke: rgb(0, 255, 255);
+}

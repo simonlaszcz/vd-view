@@ -1,5 +1,5 @@
 {
-  "name": "ViewDataViewer",
+  "name": "viewdataviewer",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -13,10 +13,10 @@
     "gulp": "^4.0.2",
     "gulp-concat": "^2.6.1",
     "gulp-cssmin": "^0.2.0",
-    "gulp-sass": "^4.1.0",
+    "gulp-sass": "^5.1.0",
     "gulp-uglify": "^3.0.2",
     "merge-stream": "^2.0.0",
-    "node-sass": "^5.0.0"
+    "sass": "^1.77.4"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

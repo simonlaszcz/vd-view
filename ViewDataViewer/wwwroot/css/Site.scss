@@ -30,9 +30,7 @@ html, body {
 }
 
 body {
-    background: linear-gradient(magenta, cyan);
-    background-repeat: no-repeat;
-    background-attachment: fixed;
+    background-color: gray;
 }
 
 .body-content {
@@ -479,7 +477,7 @@ Fluid Layout
             padding: 0.25em 0.5em 0.25em 0.5em;
 
             .svg-viewdata-view {
-                max-height: 80vh;
+                max-height: 78vh;
             }
         }
     }

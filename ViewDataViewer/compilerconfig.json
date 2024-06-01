@@ -10,5 +10,9 @@
   {
     "outputFile": "wwwroot/css/Colours.css",
     "inputFile": "wwwroot/css/Colours.scss"
+  },
+  {
+    "outputFile": "gulpfile.es5.js",
+    "inputFile": "gulpfile.js"
   }
 ]
