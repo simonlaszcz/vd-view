@@ -1,3 +1,5 @@
+  Note that the site is currently down while I assess the impact of the UK Online Safety Act
+  
 # vd-view
 Repository for https://vd-view.azurewebsites.net/
 
