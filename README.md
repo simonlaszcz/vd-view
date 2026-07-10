@@ -1,3 +1,5 @@
+Moved to https://codeberg.org/simonlaszcz/vd-view
+
 # Note that the site is currently down while I assess the impact of the UK Online Safety Act
   
 # vd-view
